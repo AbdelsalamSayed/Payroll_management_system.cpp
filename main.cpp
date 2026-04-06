@@ -1,16 +1,16 @@
 #include "main.h"
 
+
 int main() {
-	string x;
 	
-	white(Bfont);
-	bcolor(26, 26, 26);
+	hideC;
+	fcolor(150,150,150);
+	bcolor(10, 25, 47);
 	body();
 	footer();
-	move(0, 1);
+	loginpage();
 	
-	x = write_frame(5,normal);
-
-
-	cout <<endl<< x;
+	
+	//move(16, centerN(emailbarL) + 1);
+	//clearL(emailbarL - domain.length() - 2);
 }

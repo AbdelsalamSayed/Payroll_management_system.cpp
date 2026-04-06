@@ -24,12 +24,18 @@
     <ClInclude Include="UI\Head.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="loginpage\login_page.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UI\Head.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loginpage\login_page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

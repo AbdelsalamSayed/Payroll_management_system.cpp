@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="draw.h" />
+    <ClInclude Include="loginpage\login_page.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="loginpage\login_page.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

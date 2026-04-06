@@ -5,12 +5,12 @@
 #include <cstdio>
 using namespace std;
 
-constexpr int Width = 40;
+constexpr int Width = 45;
 constexpr int Hhight = 1;
 constexpr int Bhight = 30;
 
 
-inline string arrows = "arrows";
+
 inline string normal = "normal";
 inline string wrap = "wrap";
 //====================COLORS====================
@@ -50,9 +50,8 @@ constexpr int Bfont = 9;
 #define scroll(x,y) printf("\033[%d;%dr",x,y)
 #define hideC printf("\033[?25l")
 #define showC printf("\033[?25h")
-//#define center(x) ((Width-x.length())/2)+1
-
-#define center(x) (((int)Width - (int)x.length()) / 2) + 1
+#define centerN(x) (((Width - x)+1) / 2)
+#define centerS(x) (((int)Width - (int)x.length()) / 2) + 1
 
 //====================FONTS====================
 #define bold printf("\033[1m")
@@ -92,7 +91,7 @@ inline void frame(int h, int w) {
 
 }
 
-inline void Sframe(int q,int e,int h, int w) {
+inline void Sframe(int h, int w) {
 
 	char x = (char)218;
 	char y = (char)196;
@@ -100,7 +99,7 @@ inline void Sframe(int q,int e,int h, int w) {
 	char j = (char)179;
 	char t = (char)192;
 	char m = (char)217;
-	move(q - 4, e);
+	
 	std::string W(w, y);
 	std::string s(w, ' ');
 
@@ -116,4 +115,9 @@ inline void Sframe(int q,int e,int h, int w) {
 	
 
 
+}
+
+inline void clearL(int x) {
+	string spaces = string(x, ' ');
+	cout << spaces;
 }
