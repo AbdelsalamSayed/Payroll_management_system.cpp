@@ -2,16 +2,14 @@
 
 
 void body() {
-	string STR = "Ecu Payroll Mangment System.";
+	string STR = "Ecu Payroll Managment System.";
 	move(-1, 0);
-
 	Sframe(Bhight, Width);
 	move(-1, centerS(STR));
 	bold;
-	fcolor(100,200,255);
-	printf("%s", STR.c_str());
-	white(Bfont);
-	bcolor(10, 25, 47);
+	fcolor("100;210;255");
+	cout<<STR;
+	bcolor(main_back_color);
 	
 
 }

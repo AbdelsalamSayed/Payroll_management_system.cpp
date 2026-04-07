@@ -2,4 +2,5 @@
 
 #include "draw.h"
 #include "UI/Head.h"
-#include "loginpage/login_page.h"
+#include "pages/login_page.h"
+#include "classes/company.h"

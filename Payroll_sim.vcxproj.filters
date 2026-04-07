@@ -24,7 +24,10 @@
     <ClInclude Include="UI\Head.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="loginpage\login_page.h">
+    <ClInclude Include="pages\login_page.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\company.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +38,10 @@
     <ClCompile Include="UI\Head.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loginpage\login_page.cpp">
+    <ClCompile Include="pages\login_page.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\company.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

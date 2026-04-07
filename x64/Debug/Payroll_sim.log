@@ -1,2 +1,8 @@
-﻿  LINK : D:\Payroll_sim\x64\Debug\Payroll_sim.exe not found or not built by the last incremental link; performing full link
+﻿  Head.cpp
+  company.cpp
+  main.cpp
+  login_page.cpp
+D:\Payroll_sim\Payroll_sim\pages\login_page.cpp(5,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\Payroll_sim\Payroll_sim\pages\login_page.cpp(50,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   Payroll_sim.vcxproj -> D:\Payroll_sim\x64\Debug\Payroll_sim.exe

@@ -127,13 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="classes\company.h" />
     <ClInclude Include="draw.h" />
-    <ClInclude Include="loginpage\login_page.h" />
+    <ClInclude Include="pages\login_page.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="loginpage\login_page.cpp" />
+    <ClCompile Include="classes\company.cpp" />
+    <ClCompile Include="pages\login_page.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
