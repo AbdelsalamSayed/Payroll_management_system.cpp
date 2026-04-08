@@ -130,12 +130,14 @@
     <ClInclude Include="classes\company.h" />
     <ClInclude Include="draw.h" />
     <ClInclude Include="pages\login_page.h" />
+    <ClInclude Include="security\search_user.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="classes\company.cpp" />
     <ClCompile Include="pages\login_page.cpp" />
+    <ClCompile Include="security\search_user.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

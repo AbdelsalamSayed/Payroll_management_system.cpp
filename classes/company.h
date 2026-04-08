@@ -54,8 +54,15 @@ public:
 		void set_deduction(float new_deduction);
 
 	};
+private:
 	vector<employee> employeeslist;
+public:
 	void add_emp(string emp_name, string emp_email, string emp_pass, float emp_salary);
+	int get_emp_count();
+	int searchID(int id);
+	int searchemail(string email);
+	void delete_emp(int id);
+
 
 
 };

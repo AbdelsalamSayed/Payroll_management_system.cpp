@@ -3,7 +3,8 @@
 #include "../draw.h"
 #include "../UI/Head.h"
 
-
-
-void loginpage();
+inline int position;
+inline string domain;
+string loginpage();
+void loginpage_ui();
 

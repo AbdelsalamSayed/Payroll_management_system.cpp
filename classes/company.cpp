@@ -87,3 +87,29 @@ employee new_emp(emp_name, emp_email, emp_pass, emp_salary);
 employeeslist.push_back(new_emp);
 }
 
+int company::get_emp_count() { return (int)company::employeeslist.size(); }
+
+int company::searchID(int id) {
+	for (int i = 0;i < (int)company::employeeslist.size();i++) {
+		if (company::employeeslist[i].get_id() == id) {
+			return i;
+		}
+	}
+	return -1;
+}
+int company::searchemail(string email) {
+
+	for (int i = 0;i < (int)company::employeeslist.size();i++) {
+		if (company::employeeslist[i].get_email() == email) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+void company::delete_emp(int id) {
+	int index = searchID(id);
+	if (index != -1) {
+		company::employeeslist.erase(company::employeeslist.begin() + index);
+	}
+}

@@ -30,6 +30,9 @@
     <ClInclude Include="classes\company.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="security\search_user.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="classes\company.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="security\search_user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

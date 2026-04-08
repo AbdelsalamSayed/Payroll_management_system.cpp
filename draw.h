@@ -23,6 +23,8 @@ inline string hoverd_font_color = "255;255;255";
 
 inline string normal = "normal";
 inline string wrap = "wrap";
+inline string email = "email";
+inline string pass = "pass";
 //====================COLORS====================
 
 constexpr int back = 4;
