@@ -127,16 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="classes\Appsystem.h" />
     <ClInclude Include="classes\company.h" />
     <ClInclude Include="draw.h" />
+    <ClInclude Include="classes\employee.h" />
     <ClInclude Include="pages\login_page.h" />
+    <ClInclude Include="pages\password_page.h" />
     <ClInclude Include="security\search_user.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="classes\Appsystem.cpp" />
     <ClCompile Include="classes\company.cpp" />
+    <ClCompile Include="classes\employee.cpp" />
     <ClCompile Include="pages\login_page.cpp" />
+    <ClCompile Include="pages\password_page.cpp" />
     <ClCompile Include="security\search_user.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="main.cpp" />

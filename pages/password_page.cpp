@@ -1,6 +1,14 @@
-#include "login_page.h"
+#include "password_page.h"
 
-void loginpage_ui() {
+
+
+void passpage_ui(string email) {
+	loginSTR = "Welcome!";
+	loginSTR2 = email;
+	domain = "Password";
+	loginSTR3 = "Enter Your Password ";
+	string loginSTR4 = "to securely access your payroll dashboard";
+
 	fcolor(main_bordr_color);
 	bcolor(main_back_color);
 	body();
@@ -19,7 +27,10 @@ void loginpage_ui() {
 	cout << loginSTR2;
 	move(12, centerS(loginSTR3));
 	cout << loginSTR3;
+	move(13, centerS(loginSTR4));
+	cout << loginSTR4;
 	move(15, centerN(emailbarL));
+
 	bcolor(main_boxback_color);
 	Sframe(1, emailbarL);
 	move(16, edomain);
@@ -40,9 +51,9 @@ void loginpage_ui() {
 	cout << "Login";
 }
 
-string loginpage() {
-	position = 1;
-	string input,functions;
+
+string pass_page() {
+	string input, functions;
 	bcolor(main_boxback_color);
 	move(16, edomain);
 	clearL(emailbarL-1);
@@ -51,27 +62,29 @@ string loginpage() {
 	moveL(domain.length());
 	fcolor(main_font_color);
 	move(16, centerN(emailbarL) + 2);
+	move(21, centerN(13));
+	bcolor(botton_color);
+	fcolor(botton_border_color);
+	Sframe(1, 13);
+	fcolor(botton_font_color);
+	move(22, centerN(4));
+	cout << "Login";
+	position = 1;
+	move(16, centerN(emailbarL) + 2 + input.length());
+	bcolor(main_boxback_color);
+	fcolor(write_font_color);
 	
-	
+
+
 	do {
-		
-		move(21, centerN(13));
-		bcolor(botton_color);
-		fcolor(botton_border_color);
-		Sframe(1, 13);
-		fcolor(botton_font_color);
-		move(22, centerN(4));
-		cout << "Login";
-		position = 1;
-		move(16, centerN(emailbarL) + 2 + input.length());
 		bcolor(main_boxback_color);
 		fcolor(write_font_color);
-	
-		write_frame(emailbarL - 2,email, input, functions);
 		
+		write_frame(emailbarL - 2, pass, input, functions);
+
 
 		if (functions == "down" && position == 1) {
-			hideC;
+			
 			move(21, centerN(13));
 			bcolor(hoverd_botton_color);
 			fcolor(hoverd_border_color);
@@ -81,10 +94,11 @@ string loginpage() {
 			cout << "Login";
 			position = 2;
 			bottons(functions);
-			
-		}
-		if (functions == "up" && position == 2){
 
+		}
+		if (functions == "up" && position == 2) {
+
+			
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
@@ -97,10 +111,10 @@ string loginpage() {
 			position = 1;
 			move(16, centerN(emailbarL) + 2 + input.length());
 		}
-		
+
 
 	} while (functions != "enter");
 	return input;
-	
-	hideC;
+
+	return input;
 }

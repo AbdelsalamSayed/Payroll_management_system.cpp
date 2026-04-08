@@ -1,5 +1,8 @@
+D:\Payroll_sim\Payroll_sim\classes\Appsystem.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\Appsystem.obj
 D:\Payroll_sim\Payroll_sim\classes\company.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\company.obj
+D:\Payroll_sim\Payroll_sim\classes\employee.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\employee.obj
 D:\Payroll_sim\Payroll_sim\pages\login_page.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\login_page.obj
+D:\Payroll_sim\Payroll_sim\pages\password_page.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\password_page.obj
 D:\Payroll_sim\Payroll_sim\security\search_user.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\search_user.obj
 D:\Payroll_sim\Payroll_sim\UI\Head.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\Head.obj
 D:\Payroll_sim\Payroll_sim\main.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\main.obj

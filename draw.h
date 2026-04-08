@@ -132,6 +132,7 @@ inline void Sframe(int h, int w) {
 inline void clearL(int x) {
 	string spaces = string(x, ' ');
 	cout << spaces;
+	moveL(x);
 }
 
 

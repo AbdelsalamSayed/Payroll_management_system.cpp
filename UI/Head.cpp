@@ -45,7 +45,7 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 		showC;
 		input = _getch();
 		hideC;
-		if (input == 13) { functions = "enter"; break; } //Enter
+		if (input == 13) { functions = "enter"; break; }//Enter
 		else if (input == 9) {  }//TAP
 		else if (input == 127) {  }//CTRL+BACKSPACE
 		else if (input == 27) { functions = "esc"; break; }//ESC
@@ -84,7 +84,7 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 
 				}
 			}
-			else if (statu == email && lastinput.length() != 0) {
+			else if ((statu == email || statu == pass) && lastinput.length() != 0) {
 				if (lastinput.length() == 1) {
 					lastinput.pop_back();
 					cout << "\b \b";
@@ -149,5 +149,25 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 			 
 			}
 		}
+		else if (statu == pass) {
+			std::string W(num, ' ');
+			if (lastinput.length() == 0) {
+				cout << W;
+				moveL(num);
+				cout << "*";
+				lastinput += input;
+			}
+			else if (lastinput.length() < num) {
+				cout << "*";
+				lastinput += input;
+			}
+			else {
+				cout << "\b\b..";
+				lastinput += input;
+
+
+			}
+		}
 	} while (true);
+	hideC;
 }
