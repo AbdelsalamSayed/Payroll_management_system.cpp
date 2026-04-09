@@ -129,13 +129,14 @@
   <ItemGroup>
     <ClInclude Include="classes\Appsystem.h" />
     <ClInclude Include="classes\company.h" />
-    <ClInclude Include="draw.h" />
+    <ClInclude Include="Main_H.h" />
     <ClInclude Include="classes\employee.h" />
     <ClInclude Include="pages\login_page.h" />
     <ClInclude Include="pages\password_page.h" />
     <ClInclude Include="security\search_user.h" />
+    <ClInclude Include="pages\system_admin.h" />
     <ClInclude Include="UI\Head.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="program.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="classes\Appsystem.cpp" />
@@ -144,8 +145,9 @@
     <ClCompile Include="pages\login_page.cpp" />
     <ClCompile Include="pages\password_page.cpp" />
     <ClCompile Include="security\search_user.cpp" />
+    <ClCompile Include="pages\system_admin.cpp" />
     <ClCompile Include="UI\Head.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="program.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

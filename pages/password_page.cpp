@@ -8,16 +8,10 @@ void passpage_ui(string email) {
 	domain = "Password";
 	loginSTR3 = "Enter Your Password ";
 	string loginSTR4 = "to securely access your payroll dashboard";
-
 	fcolor(main_bordr_color);
 	bcolor(main_back_color);
 	body();
-	footer();
-	move(2, centerN(40));
-	blink;
-	fcolor("100;210;255");
-	draw_logo();
-	reset;
+	draw_logo(2);
 	fcolor(main_bordr_color);
 	bcolor(main_back_color);
 	move(10, centerS(loginSTR));
@@ -30,9 +24,9 @@ void passpage_ui(string email) {
 	move(13, centerS(loginSTR4));
 	cout << loginSTR4;
 	move(15, centerN(emailbarL));
-
+	fcolor(main_boxborder_color);
 	bcolor(main_boxback_color);
-	Sframe(1, emailbarL);
+	Dframe(1, emailbarL);
 	move(16, edomain);
 	fcolor("80;80;80");
 	cout << domain;
@@ -45,76 +39,120 @@ void passpage_ui(string email) {
 	move(21, centerN(13));
 	bcolor(botton_color);
 	fcolor(botton_border_color);
-	Sframe(1, 13);
+	Dframe(1, 13);
 	fcolor(botton_font_color);
 	move(22, centerN(4));
 	cout << "Login";
 }
 
 
-string pass_page() {
-	string input, functions;
-	bcolor(main_boxback_color);
-	move(16, edomain);
-	clearL(emailbarL-1);
-	fcolor("80;80;80");
-	cout << domain;
-	moveL(domain.length());
-	fcolor(main_font_color);
-	move(16, centerN(emailbarL) + 2);
-	move(21, centerN(13));
-	bcolor(botton_color);
-	fcolor(botton_border_color);
-	Sframe(1, 13);
-	fcolor(botton_font_color);
-	move(22, centerN(4));
-	cout << "Login";
-	position = 1;
-	move(16, centerN(emailbarL) + 2 + input.length());
-	bcolor(main_boxback_color);
-	fcolor(write_font_color);
+void pass_page(string email) {
+	string input, functions="start";
 	
-
-
 	do {
-		bcolor(main_boxback_color);
-		fcolor(write_font_color);
-		
+		position = 1;
+		if (functions == "start") {
+			input = "";
+			bcolor(main_boxback_color);
+			move(16, edomain);
+			clearL(emailbarL - 1);
+			fcolor("80;80;80");
+			cout << domain;
+			moveL(domain.length());
+			fcolor(main_font_color);
+			move(21, centerN(13));
+			bcolor(botton_color);
+			fcolor(botton_border_color);
+			Dframe(1, 13);
+			fcolor(botton_font_color);
+			move(22, centerN(4));
+			cout << "Login";
+			move(16, centerN(emailbarL) + 2 + input.length());
+			bcolor(main_boxback_color);
+			fcolor(write_font_color);
+		}
+
 		write_frame(emailbarL - 2, pass, input, functions);
+		
 
-
-		if (functions == "down" && position == 1) {
-			
+		if ((functions == "down" || functions == "tab" )&& position == 1) {
+			saveL;
 			move(21, centerN(13));
 			bcolor(hoverd_botton_color);
 			fcolor(hoverd_border_color);
-			Sframe(1, 13);
+			Dframe(1, 13);
 			fcolor(hoverd_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 2;
-			bottons(functions);
+			buttons(functions);
 
 		}
-		if (functions == "up" && position == 2) {
-
-			
+		if ((functions == "up" || functions == "tab") && position == 2) {
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
 			bcolor(botton_color);
 			fcolor(botton_border_color);
-			Sframe(1, 13);
+			Dframe(1, 13);
 			fcolor(botton_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 1;
-			move(16, centerN(emailbarL) + 2 + input.length());
+			gotoL;
 		}
+		if (functions == "enter") {
+			functions = "start";
+			employee& current_user = sys.get_employee_by_email(email);
+			if (current_user.get_pass() != input && try_num > 0 && try_count > 0 && !input.empty()) {
+				try_count--;
+				bcolor(main_back_color);
+				move(18, 1);
+				clearL(Width - 2);
+				string error = "Incorrect password you have " + to_string(try_count) + " more try";
+				red(font);
+				move(18, centerS(error));
+				cout << error;
+				fcolor(main_font_color);
+			}
+			else if (current_user.get_pass() != input && try_count == 0) {
+				
+				try_count = try_num;
+				if (current_user.get_role() != roles[0]) {
+					current_user.set_locked(true);
+				}
+				loginpage_ui();
+				string error0 = "Your account has been locked.";
+				string error1 = "Please contact HR to unlock it.";
+				bcolor(main_back_color);
+				move(18, 1);
+				clearL(Width - 2);
+				move(19, 1);
+				clearL(Width - 2);
+				red(font);
+				move(18, centerS(error0));
+				cout << error0;
+				move(19, centerS(error1));
+				cout << error1;
+				fcolor(main_font_color);
+				loginpage();
+			}
+			else if (current_user.get_pass() == input && current_user.get_email() == email) {
+				break;
+			}
+		}
+	} while (true);
+	employee& current_user = sys.get_employee_by_email(email);
+	if (current_user.get_role() == roles[0]) {
+		system_admin_pages();
+	}
+	else if (current_user.get_role() == roles[1]) {
 
+	}
+	else if (current_user.get_role() == roles[2]) {
 
-	} while (functions != "enter");
-	return input;
+	}
+	else if (current_user.get_role() == roles[3]) {
 
-	return input;
+	}
 }

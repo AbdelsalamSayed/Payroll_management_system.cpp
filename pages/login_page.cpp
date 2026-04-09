@@ -1,15 +1,14 @@
 #include "login_page.h"
 
 void loginpage_ui() {
+	loginSTR = "Welcome back!";
+	loginSTR2 = "Please use your employee Email";
+	loginSTR3 = "to securely access your payroll dashboard";
+	domain = "username@example.ecu";
 	fcolor(main_bordr_color);
 	bcolor(main_back_color);
 	body();
-	footer();
-	move(2, centerN(40));
-	blink;
-	fcolor("100;210;255");
-	draw_logo();
-	reset;
+	draw_logo(2);
 	fcolor(main_bordr_color);
 	bcolor(main_back_color);
 	move(10, centerS(loginSTR));
@@ -21,7 +20,9 @@ void loginpage_ui() {
 	cout << loginSTR3;
 	move(15, centerN(emailbarL));
 	bcolor(main_boxback_color);
-	Sframe(1, emailbarL);
+	fcolor(main_boxborder_color);
+	Dframe(1, emailbarL);
+	domain = "username@example.ecu";
 	move(16, edomain);
 	fcolor("80;80;80");
 	cout << domain;
@@ -34,73 +35,121 @@ void loginpage_ui() {
 	move(21, centerN(13));
 	bcolor(botton_color);
 	fcolor(botton_border_color);
-	Sframe(1, 13);
+	Dframe(1, 13);
 	fcolor(botton_font_color);
 	move(22, centerN(4));
 	cout << "Login";
 }
 
-string loginpage() {
-	position = 1;
-	string input,functions;
-	bcolor(main_boxback_color);
-	move(16, edomain);
-	clearL(emailbarL-1);
-	fcolor("80;80;80");
-	cout << domain;
-	moveL(domain.length());
-	fcolor(main_font_color);
-	move(16, centerN(emailbarL) + 2);
+void loginpage() {
+	string email;
 	
-	
+	string functions = "start";
 	do {
 		
-		move(21, centerN(13));
-		bcolor(botton_color);
-		fcolor(botton_border_color);
-		Sframe(1, 13);
-		fcolor(botton_font_color);
-		move(22, centerN(4));
-		cout << "Login";
-		position = 1;
-		move(16, centerN(emailbarL) + 2 + input.length());
-		bcolor(main_boxback_color);
-		fcolor(write_font_color);
-	
-		write_frame(emailbarL - 2,email, input, functions);
 		
+		int index;
+		
+		if (functions == "start") {
+			position = 1;
+			email = "";
+			saveL;
+			bcolor(main_boxback_color);
+			fcolor(write_font_color);
+			move(21, centerN(13));
+			bcolor(botton_color);
+			fcolor(botton_border_color);
+			Dframe(1, 13);
+			fcolor(botton_font_color);
+			move(22, centerN(4));
+			cout << "Login";
+			gotoL;
+			bcolor(main_boxback_color);
+			move(16, edomain);
+			clearL(emailbarL - 1);
+			fcolor("80;80;80");
+			cout << domain;
+			moveL(domain.length());
+			fcolor(main_font_color);
+			move(16, centerN(emailbarL) + 2);
+		}
 
-		if (functions == "down" && position == 1) {
+		write_frame(emailbarL - 2, _email, email, functions);
+
+
+		if ((functions == "down" || functions == "tab") && position == 1) {
 			hideC;
+			saveL;
 			move(21, centerN(13));
 			bcolor(hoverd_botton_color);
 			fcolor(hoverd_border_color);
-			Sframe(1, 13);
+			Dframe(1, 13);
 			fcolor(hoverd_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 2;
-			bottons(functions);
-			
+			buttons(functions="login");
+
 		}
-		if (functions == "up" && position == 2){
+		if ((functions == "up" || functions == "tab" )&& position == 2) {
 
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
 			bcolor(botton_color);
 			fcolor(botton_border_color);
-			Sframe(1, 13);
+			Dframe(1, 13);
 			fcolor(botton_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 1;
-			move(16, centerN(emailbarL) + 2 + input.length());
+			gotoL;
 		}
-		
+		if (functions == "enter"&&!email.empty()) {
+			functions = "start";
+			index = sys.search_emp_email(email);
+			if (index == -1) {
+				string error0 = "Email not registered in the system.\a";
+				string error1 = "Please contact HR";
+				bcolor(main_back_color);
+				move(18, 1);
+				clearL(Width - 2);
+				move(19, 1);
+				clearL(Width - 2);
+				red(font);
+				move(18, centerS(error0));
+				cout << error0;
+				move(19, centerS(error1));
+				cout << error1;
+				fcolor(main_font_color);
 
-	} while (functions != "enter");
-	return input;
+			}
+			else {
+				employee& current_user = sys.get_employee_by_email(email);
+				if (current_user.get_locked() == true) {
+					string error0 = "Email not registered in the system.\a";
+					string error1 = "Please contact HR";
+					bcolor(main_back_color);
+					move(18, 1);
+					clearL(Width - 2);
+					move(19, 1);
+					clearL(Width - 2);
+					red(font);
+					move(18, centerS(error0));
+					cout << error0;
+					move(19, centerS(error1));
+					cout << error1;
+					fcolor(main_font_color);
+				}
+				else {
+					break;
+				}
+			}
+		}
 	
-	hideC;
+	} while (true);
+
+		passpage_ui(email);
+		pass_page(email);
+
 }

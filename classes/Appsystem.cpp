@@ -1,4 +1,6 @@
 #include "Appsystem.h"
+bool Appsystem::get_system_online() { return system_online; }
+void Appsystem::set_system_online(bool online) { system_online = online; }
 
 void Appsystem::add_comp(string company_name, string company_domain) {
 	company new_company = company(company_name, company_domain);
@@ -56,3 +58,6 @@ void Appsystem::delete_emp(int id) {
 		employeeslist.erase(employeeslist.begin() + index);
 	}
 }
+
+
+

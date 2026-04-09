@@ -1,14 +1,18 @@
 #pragma once
-#include "../draw.h"
+#include "../Main_H.h"
 #include "company.h"
 #include "employee.h"
 
+
 class  Appsystem {
 
+	bool system_online=true;
 	vector<company> companylist;
 	vector<employee> employeeslist;
 
 public:
+	bool get_system_online();
+	void set_system_online(bool online);
 	void add_emp(string emp_name, string emp_email, string emp_pass, float emp_salary,string company_name);
 	int get_emp_count();
 	int search_emp_ID(int id);
@@ -20,3 +24,4 @@ public:
 	int get_company_id(string company_name);
 	void delete_comp(string company_name);
 };
+

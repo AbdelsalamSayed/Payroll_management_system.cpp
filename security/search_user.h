@@ -1,6 +1,6 @@
 #pragma once
 
-#include"../draw.h"
+#include"../Main_H.h"
 #include "../classes/company.h"
 
 void adduser();

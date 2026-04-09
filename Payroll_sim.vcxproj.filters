@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="draw.h">
+    <ClInclude Include="Main_H.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI\Head.h">
@@ -42,9 +42,12 @@
     <ClInclude Include="classes\Appsystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="pages\system_admin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UI\Head.cpp">
@@ -66,6 +69,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="classes\Appsystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pages\system_admin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

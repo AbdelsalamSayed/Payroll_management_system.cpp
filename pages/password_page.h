@@ -1,6 +1,7 @@
 #pragma once
-#include "../draw.h"
+#include "../Main_H.h"
 #include "../UI/Head.h"
+#include "system_admin.h"
 
-string pass_page();
+void pass_page(string email);
 void passpage_ui(string email);

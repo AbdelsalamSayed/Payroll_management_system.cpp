@@ -2,40 +2,144 @@
 
 
 void body() {
-	string STR = "Ecu Payroll Managment System.";
+	bcolor(main_back_color);
+	fcolor(main_bordr_color);
+	string STR = "Ecu Payroll Management System.";
 	move(-1, 0);
-	Sframe(Bhight, Width);
+	Dframe(Bhight, Width);
 	move(-1, centerS(STR));
 	bold;
 	fcolor("100;210;255");
 	cout<<STR;
 	bcolor(main_back_color);
+	fcolor(main_bordr_color);
+
 	
 
 }
 
-void footer() {
-	
+void footer(string role,int button_num) {
+	string home = "Home",add = "Add Comp", edit = "Edit Comp", setting = "Settings";
+	if (role == roles[0]) {
+		if (button_num == 1) {
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			move(Bhight - 4, 0);
+			f3frame(1, 10, 10,10,10 , button_num);
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_botton_color);
+			move(Bhight - 3, centerLN(1, 11, home));
+			cout << home;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(12, 23, add));
+			cout << add;
+			move(Bhight - 3, centerLN(24, 34, edit));
+			cout << edit;
+			move(Bhight - 3, centerLN(34, 45, setting));
+			cout << setting;
+		}
+		else if (button_num == 2) {
+			move(Bhight - 4, 0);
+			f3frame(1, 10, 10, 10,10, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 11, home));
+			cout << home;
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_botton_color);
+			move(Bhight - 3, centerLN(12, 23, add));
+			cout << add;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(24, 34, edit));
+			cout << edit;
+			move(Bhight - 3, centerLN(34, 45, setting));
+			cout << setting;
+		}
+		else if (button_num == 3) {
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			move(Bhight - 4, 0);
+			f3frame(1, 10, 10, 10,10, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 16, home));
+			cout << home;
+			move(Bhight - 3, centerLN(16, 30, add));
+			cout << add;
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_botton_color);
+			move(Bhight - 3, centerLN(32, 45, edit));
+			cout << edit;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(32, 45, setting));
+			cout << setting;
+		}
+		else if (button_num == 4) {
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			move(Bhight - 4, 0);
+			f3frame(1, 10, 10, 10,10, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 16, home));
+			cout << home;
+			move(Bhight - 3, centerLN(16, 30, add));
+			cout << add;
+			move(Bhight - 3, centerLN(32, 45, edit));
+			cout << edit;
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_botton_color);
+			move(Bhight - 3, centerLN(32, 45, setting));
+			cout << setting;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+		}
+	}
+
 }
 
 void login_head() {
 
 }
 
-void bottons(string& functions) {
-	do
-	{
-	char input = _getch();
-	if (input == 13) { functions = "enter"; position = 1; } //Enter
-	else if (input == 27) { functions = "esc"; }
-	else if (input == -32) {
-		input = _getch();
-		if (input == 72) { functions = "up"; } //Arrow Up
-		else if (input == 80) { functions = "down"; } //Arrow Down
-		else if (input == 77) { functions = "right"; } //Arrow Right
-		else if (input == 75) { functions = "left"; } //Arrow Left
-	}else{}
-	} while (functions!= "enter" && functions!= "up");
+void buttons(string& functions) {
+	if (functions == "login" || functions == "pass") {
+		do
+		{
+
+			char input = _getch();
+			if (input == 13) { functions = "enter"; position = 1; } //Enter
+			else if (input == 27) { functions = "esc"; }
+			else if (input == 9) { functions = "tab"; break; }//tap
+			else if (input == -32) {
+				input = _getch();
+				if (input == 72) { functions = "up"; } //Arrow Up
+				else if (input == 80) { functions = "down"; } //Arrow Down
+				else if (input == 77) { functions = "right"; } //Arrow Right
+				else if (input == 75) { functions = "left"; } //Arrow Left
+			}
+
+		} while (functions != "enter" && functions != "up");
+	}else if (functions == "super_admin") {
+		do
+		{
+			char input = _getch();
+			if (input == 13) { functions = "enter"; } //Enter
+			else if (input == 27) { functions = "esc"; }
+			else if (input == 9) { functions = "tab"; break; }//tap
+			else if (input == -32) {
+				input = _getch();
+				if (input == 72) { functions = "up"; } //Arrow Up
+				else if (input == 80) { functions = "down"; } //Arrow Down
+				else if (input == 77) { functions = "right"; } //Arrow Right
+				else if (input == 75) { functions = "left"; } //Arrow Left
+			}
+
+		} while (functions != "left" && functions != "right" && functions != "enter");
+	}
 }
 
 void write_frame(int num, string statu, string& lastinput, string& functions) {
@@ -46,15 +150,14 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 		input = _getch();
 		hideC;
 		if (input == 13) { functions = "enter"; break; }//Enter
-		else if (input == 9) {  }//TAP
-		else if (input == 127) {  }//CTRL+BACKSPACE
 		else if (input == 27) { functions = "esc"; break; }//ESC
+		else if (input == 9) { functions = "tab"; break; }//tap
 		else if (input == -32) {
 			input = _getch();
 			if (input == 72) { functions = "up"; break; } //Arrow Up
 			else if (input == 80) { functions = "down"; break; } //Arrow Down
-			else if (input == 77) { functions = "right"; break; } //Arrow Right
-			else if (input == 75) { functions = "left"; break; } //Arrow Left
+			else if (input == 77 && statu!=_email && statu != pass) { functions = "right"; break; } //Arrow Right
+			else if (input == 75 && statu != _email && statu != pass) { functions = "left"; break; } //Arrow Left
 		}
 		//Back Space
 		else if (input == 8) {
@@ -84,7 +187,7 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 
 				}
 			}
-			else if ((statu == email || statu == pass) && lastinput.length() != 0) {
+			else if ((statu == _email || statu == pass) && lastinput.length() != 0) {
 				if (lastinput.length() == 1) {
 					lastinput.pop_back();
 					cout << "\b \b";
@@ -110,62 +213,66 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 
 			// defult letters or digits
 		}
-		else if (statu == wrap) {
-			if (lastinput.length() != 0 && lastinput.length() % num == 0) {
-				moveD(1);
-				moveL(num);
-				cout << input;
-				lastinput += input;
-			}
-			else {
-				cout << input;
-				lastinput += input;
-			}
-		}
-		else if (statu == normal) {
-			if (lastinput.length() < num) {
-				cout << input;
-				lastinput += input;
-			}
-			else {
-				cout << "\b\b..";
-				lastinput += input;
-			}
-		}
-		else if ( statu == email ){
-			std::string W(num , ' ');
-			if (lastinput.length() == 0) {
-				cout << W;
-				moveL(num );
-				cout << input;
-				lastinput += input;
-			}else if (lastinput.length() < num) {
+		else if (input >= 32 && input <= 126) {
+			if (statu == wrap) {
+				if (lastinput.length() != 0 && lastinput.length() % num == 0) {
+					moveD(1);
+					moveL(num);
 					cout << input;
 					lastinput += input;
-			}else {
+				}
+				else {
+					cout << input;
+					lastinput += input;
+				}
+			}
+			else if (statu == normal) {
+				if (lastinput.length() < num) {
+					cout << input;
+					lastinput += input;
+				}
+				else {
+					cout << "\b\b..";
+					lastinput += input;
+				}
+			}
+			else if (statu == _email) {
+				std::string W(num, ' ');
+				if (lastinput.length() == 0) {
+					cout << W;
+					moveL(num);
+					cout << input;
+					lastinput += input;
+				}
+				else if (lastinput.length() < num) {
+					cout << input;
+					lastinput += input;
+				}
+				else {
 					cout << "\b\b..";
 					lastinput += input;
 
-			 
+
+				}
 			}
-		}
-		else if (statu == pass) {
-			std::string W(num, ' ');
-			if (lastinput.length() == 0) {
-				cout << W;
-				moveL(num);
-				cout << "*";
-				lastinput += input;
-			}
-			else if (lastinput.length() < num) {
-				cout << "*";
-				lastinput += input;
-			}
-			else {
-				cout << "\b\b..";
-				lastinput += input;
+			else if (statu == pass) {
+				std::string W(num, ' ');
+				if (lastinput.length() == 0) {
+					cout << W;
+					moveL(num);
+					cout << "*";
+					lastinput += input;
+				}
+				else if (lastinput.length() < num) {
+					cout << "*";
+					lastinput += input;
+				}
+				else {
+					cout << "\b\b..";
+					lastinput += input;
 
 
+				}
 			}
 		}
 	} while (true);

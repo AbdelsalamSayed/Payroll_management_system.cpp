@@ -4,5 +4,6 @@ D:\Payroll_sim\Payroll_sim\classes\employee.cpp;D:\Payroll_sim\Payroll_sim\x64\D
 D:\Payroll_sim\Payroll_sim\pages\login_page.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\login_page.obj
 D:\Payroll_sim\Payroll_sim\pages\password_page.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\password_page.obj
 D:\Payroll_sim\Payroll_sim\security\search_user.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\search_user.obj
+D:\Payroll_sim\Payroll_sim\pages\system_admin.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\system_admin.obj
 D:\Payroll_sim\Payroll_sim\UI\Head.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\Head.obj
-D:\Payroll_sim\Payroll_sim\main.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\main.obj
+D:\Payroll_sim\Payroll_sim\program.cpp;D:\Payroll_sim\Payroll_sim\x64\Debug\program.obj
