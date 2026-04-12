@@ -19,13 +19,13 @@ void body() {
 }
 
 void footer(string role,int button_num) {
-	string home = "Home",add = "Add Comp", edit = "Edit Comp", setting = "Settings";
+	string home = "Home",add = "Add  Comp", edit = "Edit Comp", setting = "Settings";
+	bcolor(main_back_color);
+	fcolor(main_bordr_color);
+	move(Bhight - 4, 0);
 	if (role == roles[0]) {
 		if (button_num == 1) {
-			bcolor(main_back_color);
-			fcolor(main_bordr_color);
-			move(Bhight - 4, 0);
-			f3frame(1, 10, 10,10,10 , button_num);
+			f3frame(1, 10, 11, 11, 10, button_num);
 			fcolor(hoverd_font_color);
 			bcolor(hoverd_botton_color);
 			move(Bhight - 3, centerLN(1, 11, home));
@@ -34,14 +34,13 @@ void footer(string role,int button_num) {
 			fcolor(main_font_color);
 			move(Bhight - 3, centerLN(12, 23, add));
 			cout << add;
-			move(Bhight - 3, centerLN(24, 34, edit));
+			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
-			move(Bhight - 3, centerLN(34, 45, setting));
+			move(Bhight - 3, centerLN(37, 45, setting));
 			cout << setting;
 		}
 		else if (button_num == 2) {
-			move(Bhight - 4, 0);
-			f3frame(1, 10, 10, 10,10, button_num);
+			f3frame(1, 10, 11, 11, 10, button_num);
 			bcolor(main_back_color);
 			fcolor(main_font_color);
 			move(Bhight - 3, centerLN(1, 11, home));
@@ -52,47 +51,41 @@ void footer(string role,int button_num) {
 			cout << add;
 			bcolor(main_back_color);
 			fcolor(main_font_color);
-			move(Bhight - 3, centerLN(24, 34, edit));
+			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
-			move(Bhight - 3, centerLN(34, 45, setting));
+			move(Bhight - 3, centerLN(37, 45, setting));
 			cout << setting;
 		}
 		else if (button_num == 3) {
-			bcolor(main_back_color);
-			fcolor(main_bordr_color);
-			move(Bhight - 4, 0);
-			f3frame(1, 10, 10, 10,10, button_num);
+			f3frame(1, 10, 11, 11, 10, button_num);
 			bcolor(main_back_color);
 			fcolor(main_font_color);
-			move(Bhight - 3, centerLN(1, 16, home));
+			move(Bhight - 3, centerLN(1, 11, home));
 			cout << home;
-			move(Bhight - 3, centerLN(16, 30, add));
+			move(Bhight - 3, centerLN(12, 23, add));
 			cout << add;
 			fcolor(hoverd_font_color);
 			bcolor(hoverd_botton_color);
-			move(Bhight - 3, centerLN(32, 45, edit));
+			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
 			bcolor(main_back_color);
 			fcolor(main_font_color);
-			move(Bhight - 3, centerLN(32, 45, setting));
+			move(Bhight - 3, centerLN(37, 45, setting));
 			cout << setting;
 		}
 		else if (button_num == 4) {
-			bcolor(main_back_color);
-			fcolor(main_bordr_color);
-			move(Bhight - 4, 0);
-			f3frame(1, 10, 10, 10,10, button_num);
+			f3frame(1, 10, 11, 11, 10, button_num);
 			bcolor(main_back_color);
 			fcolor(main_font_color);
-			move(Bhight - 3, centerLN(1, 16, home));
+			move(Bhight - 3, centerLN(1, 11, home));
 			cout << home;
-			move(Bhight - 3, centerLN(16, 30, add));
+			move(Bhight - 3, centerLN(12, 23, add));
 			cout << add;
-			move(Bhight - 3, centerLN(32, 45, edit));
+			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
 			fcolor(hoverd_font_color);
 			bcolor(hoverd_botton_color);
-			move(Bhight - 3, centerLN(32, 45, setting));
+			move(Bhight - 3, centerLN(37, 45, setting));
 			cout << setting;
 			bcolor(main_back_color);
 			fcolor(main_font_color);

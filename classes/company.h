@@ -6,7 +6,7 @@
 
 class company
 {
-	inline static int last_comp_id = 1;
+	inline static int last_comp_id = 0;
 	string company_name;
 	int company_id;
 	string company_domain;

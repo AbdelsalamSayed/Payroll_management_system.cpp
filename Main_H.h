@@ -196,7 +196,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		cout << double7 << W2 << double7;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		cout << W3 << double7 << W4 << double7 << double6;
+		cout << W3 << double7 << W4 << double6;
 	}
 	else if (num == 3) {
 
@@ -205,9 +205,10 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		cout << double9 << W1<<double8 << W2 ;
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_botton_color);
-		cout << double8<< W3 << double10;
+		cout << double8<< W3 << double8;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
+		cout << W4 << double10;
 		for (int i = 0;i < h;i++) {
 			moveD(1);
 			moveL(w1 + w2 + w3 + +w4 + 5);
@@ -217,133 +218,50 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			cout << double4<< s3 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
+			cout << s4 << double4;
 		}
 		moveD(1);
 		moveL(w1 + w2 + w3 + +w4 + 5);
 		cout << double5 << W1<< double7 << W2 ;
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_botton_color);
-		cout << double7<< W3 << double6;
+		cout << double7<< W3 << double7;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << W4 << double6;
+
+	}
+	else if (num == 4) {
+
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double9 << W1<<double8 << W2 << double8<< W3 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_botton_color);
+		cout << double8 << W4 << double10;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + +w4 + 5);
+			cout << double4 << s1 << double4 << s2 << double4<< s3 ;
+			fcolor(hoverd_border_color);
+			bcolor(hoverd_botton_color);
+			cout << double4 << s4 << double4;
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + +w4 + 5);
+		cout << double5 << W1<< double7 << W2 << double7<< W3 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_botton_color);
+		cout << double7 << W4 << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
 
 	}
 }
-//inline void f3frame(int h, int w1, int w2, int w3, int num) {
-//
-//	if (num == 1) {
-//
-//		std::string W1(w1, double2);
-//		std::string W2(w2, double2);
-//		std::string W3(w3, double2);
-//
-//		std::string s1(w1, ' ');
-//		std::string s2(w2, ' ');
-//		std::string s3(w3, ' ');
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double9 << W1 << double8;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << W2 << double8 << W3 << double10;
-//		for (int i = 0;i < h;i++) {
-//			moveD(1);
-//			moveL(w1 + w2 + w3 + 4);
-//			fcolor(hoverd_border_color);
-//			bcolor(hoverd_botton_color);
-//			cout << double4 << s1 << double4;
-//			bcolor(main_back_color);
-//			fcolor(main_bordr_color);
-//			cout << s2 << double4 << s3 << double4;
-//		}
-//		moveD(1);
-//		moveL(w1 + w2 + w3 + 4);
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double5 << W1 << double7;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << W2 << double7 << W3 << double6;
-//
-//
-//	}
-//	else if (num == 2) {
-//
-//		std::string W1(w1, double2);
-//		std::string W2(w2, double2);
-//		std::string W3(w3, double2);
-//
-//		std::string s1(w1, ' ');
-//		std::string s2(w2, ' ');
-//		std::string s3(w3, ' ');
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << double9 << W1;
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double8 << W2 << double8;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << W3 << double10;
-//		for (int i = 0;i < h;i++) {
-//			moveD(1);
-//			moveL(w1 + w2 + w3 + 4);
-//			cout << double4 << s1;
-//			fcolor(hoverd_border_color);
-//			bcolor(hoverd_botton_color);
-//			cout << double4 << s2 << double4;
-//			bcolor(main_back_color);
-//			fcolor(main_bordr_color);
-//			cout << s3 << double4;
-//		}
-//		moveD(1);
-//		moveL(w1 + w2 + w3 + 4);
-//		cout << double5 << W1;
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double7 << W2 << double7;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << W3 << double6;
-//	}
-//	else if (num == 3) {
-//
-//		std::string W1(w1, double2);
-//		std::string W2(w2, double2);
-//		std::string W3(w3, double2);
-//
-//		std::string s1(w1, ' ');
-//		std::string s2(w2, ' ');
-//		std::string s3(w3, ' ');
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		cout << double9 << W1<<double8 << W2 ;
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double8<< W3 << double10;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//		for (int i = 0;i < h;i++) {
-//			moveD(1);
-//			moveL(w1 + w2 + w3 + 4);
-//			cout << double4 << s1 << double4 << s2 ;
-//			fcolor(hoverd_border_color);
-//			bcolor(hoverd_botton_color);
-//			cout << double4<< s3 << double4;
-//			bcolor(main_back_color);
-//			fcolor(main_bordr_color);
-//		}
-//		moveD(1);
-//		moveL(w1 + w2 + w3 + 4);
-//		cout << double5 << W1<< double7 << W2 ;
-//		fcolor(hoverd_border_color);
-//		bcolor(hoverd_botton_color);
-//		cout << double7<< W3 << double6;
-//		bcolor(main_back_color);
-//		fcolor(main_bordr_color);
-//
-//	}
-//}
 
 inline void f2frame(int h, int w1, int w2) {
 

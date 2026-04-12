@@ -144,6 +144,8 @@
     <ClCompile Include="classes\employee.cpp" />
     <ClCompile Include="pages\login_page.cpp" />
     <ClCompile Include="pages\password_page.cpp" />
+    <ClCompile Include="pages\system_admin_addcompany_ui.cpp" />
+    <ClCompile Include="pages\system_admin_home_ui.cpp" />
     <ClCompile Include="security\search_user.cpp" />
     <ClCompile Include="pages\system_admin.cpp" />
     <ClCompile Include="UI\Head.cpp" />
