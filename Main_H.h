@@ -4,6 +4,8 @@
 #include <string>
 #include <cstdio>
 #include <vector>
+#include <algorithm>
+#include <Windows.h>
 
 inline char double1 = (char)201; // ╔
 inline char double2 = (char)205; // ═
@@ -46,12 +48,13 @@ inline string main_boxback_color = "20;35;60";
 inline string main_bordr_color = "70;85;105";
 inline string main_font_color = "200;200;200";
 inline string write_font_color = "255;255;255";
-inline string botton_color = "30;41;59";
-inline string botton_border_color = "51;65;85";
-inline string botton_font_color = "148;163;184";
-inline string hoverd_botton_color = "10;110;255";
+inline string button_color = "30;41;59";
+inline string button_border_color = "51;65;85";
+inline string button_font_color = "148;163;184";
+inline string hoverd_button_color = "10;110;255";
 inline string hoverd_border_color = "125;211;252";
 inline string hoverd_font_color = "255;255;255";
+
 
 inline string normal = "normal";
 inline string wrap = "wrap";
@@ -64,7 +67,7 @@ constexpr int Bback = 10;
 constexpr int font = 3;
 constexpr int Bfont = 9;
 #define reset cout<<"\033[0m"
-#define black(x) cout<<"\033["<<"0m"
+#define black(x) cout<<"\033["<<x<<"0m"
 #define red(x) cout<<"\033["<<x<<"1m"
 #define green(x) cout<<"\033["<<x<<"2m"
 #define yellow(x) cout<<"\033["<<x<<"3m"
@@ -75,6 +78,9 @@ constexpr int Bfont = 9;
 #define fcolor(x) cout<<"\033[38;2;"<<x<<"m"
 #define bcolor(x) cout<<"\033[48;2;"<<x<<"m"
 #define invert cout<<"\033[7m"
+#define hoverd_button fcolor(hoverd_border_color);bcolor(hoverd_button_color)
+#define non_hoverd_button fcolor(button_border_color);bcolor(button_color)
+#define main_colors bcolor(main_back_color);fcolor(main_font_color);
 
 
 //====================CURSOR====================
@@ -140,7 +146,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 	if (num == 1) {
 
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double9 << W1 << double8;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -149,7 +155,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			moveD(1);
 			moveL(w1 + w2 + w3 + +w4 + 5);
 			fcolor(hoverd_border_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			cout << double4 << s1 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
@@ -158,7 +164,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		moveD(1);
 		moveL(w1 + w2 + w3 + +w4 + 5);
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double5 << W1 << double7;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -172,7 +178,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		fcolor(main_bordr_color);
 		cout << double9 << W1;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double8 << W2 << double8;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -182,7 +188,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			moveL(w1 + w2 + w3 + +w4 + 5);
 			cout << double4 << s1;
 			fcolor(hoverd_border_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			cout << double4 << s2 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
@@ -192,7 +198,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		moveL(w1 + w2 + w3 + +w4 + 5);
 		cout << double5 << W1;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double7 << W2 << double7;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -204,7 +210,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		fcolor(main_bordr_color);
 		cout << double9 << W1<<double8 << W2 ;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double8<< W3 << double8;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -214,7 +220,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			moveL(w1 + w2 + w3 + +w4 + 5);
 			cout << double4 << s1 << double4 << s2 ;
 			fcolor(hoverd_border_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			cout << double4<< s3 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
@@ -224,7 +230,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		moveL(w1 + w2 + w3 + +w4 + 5);
 		cout << double5 << W1<< double7 << W2 ;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double7<< W3 << double7;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -237,7 +243,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		fcolor(main_bordr_color);
 		cout << double9 << W1<<double8 << W2 << double8<< W3 ;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double8 << W4 << double10;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
@@ -246,7 +252,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			moveL(w1 + w2 + w3 + +w4 + 5);
 			cout << double4 << s1 << double4 << s2 << double4<< s3 ;
 			fcolor(hoverd_border_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			cout << double4 << s4 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
@@ -255,7 +261,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		moveL(w1 + w2 + w3 + +w4 + 5);
 		cout << double5 << W1<< double7 << W2 << double7<< W3 ;
 		fcolor(hoverd_border_color);
-		bcolor(hoverd_botton_color);
+		bcolor(hoverd_button_color);
 		cout << double7 << W4 << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);

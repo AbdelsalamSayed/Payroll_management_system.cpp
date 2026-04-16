@@ -1,4 +1,4 @@
-#include "password_page.h"
+#include "../pages.H/password_page.h"
 
 
 
@@ -37,10 +37,10 @@ void passpage_ui(string email) {
 	bcolor(main_boxback_color);
 	fcolor(write_font_color);
 	move(21, centerN(13));
-	bcolor(botton_color);
-	fcolor(botton_border_color);
+	bcolor(button_color);
+	fcolor(button_border_color);
 	Dframe(1, 13);
-	fcolor(botton_font_color);
+	fcolor(button_font_color);
 	move(22, centerN(4));
 	cout << "Login";
 }
@@ -61,10 +61,10 @@ void pass_page(string email) {
 			moveL(domain.length());
 			fcolor(main_font_color);
 			move(21, centerN(13));
-			bcolor(botton_color);
-			fcolor(botton_border_color);
+			bcolor(button_color);
+			fcolor(button_border_color);
 			Dframe(1, 13);
-			fcolor(botton_font_color);
+			fcolor(button_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			move(16, centerN(emailbarL) + 2 + input.length());
@@ -78,7 +78,7 @@ void pass_page(string email) {
 		if ((functions == "down" || functions == "tab" )&& position == 1) {
 			saveL;
 			move(21, centerN(13));
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			fcolor(hoverd_border_color);
 			Dframe(1, 13);
 			fcolor(hoverd_font_color);
@@ -92,10 +92,10 @@ void pass_page(string email) {
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
-			bcolor(botton_color);
-			fcolor(botton_border_color);
+			bcolor(button_color);
+			fcolor(button_border_color);
 			Dframe(1, 13);
-			fcolor(botton_font_color);
+			fcolor(button_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 1;

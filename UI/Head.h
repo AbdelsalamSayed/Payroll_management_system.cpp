@@ -1,6 +1,6 @@
 #pragma once
 #include "../Main_H.h"
-#include "../pages/login_page.h"
+#include "../pages.h/login_page.h"
 
 void login_head();
 

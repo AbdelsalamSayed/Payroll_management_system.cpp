@@ -131,10 +131,10 @@
     <ClInclude Include="classes\company.h" />
     <ClInclude Include="Main_H.h" />
     <ClInclude Include="classes\employee.h" />
-    <ClInclude Include="pages\login_page.h" />
-    <ClInclude Include="pages\password_page.h" />
+    <ClInclude Include="pages.H\login_page.h" />
+    <ClInclude Include="pages.H\password_page.h" />
     <ClInclude Include="security\search_user.h" />
-    <ClInclude Include="pages\system_admin.h" />
+    <ClInclude Include="pages.H\system_admin.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="program.h" />
   </ItemGroup>
@@ -142,12 +142,14 @@
     <ClCompile Include="classes\Appsystem.cpp" />
     <ClCompile Include="classes\company.cpp" />
     <ClCompile Include="classes\employee.cpp" />
-    <ClCompile Include="pages\login_page.cpp" />
-    <ClCompile Include="pages\password_page.cpp" />
-    <ClCompile Include="pages\system_admin_addcompany_ui.cpp" />
-    <ClCompile Include="pages\system_admin_home_ui.cpp" />
+    <ClCompile Include="pages.cpp\edit_company_ui.cpp" />
+    <ClCompile Include="pages.cpp\login_page.cpp" />
+    <ClCompile Include="pages.cpp\password_page.cpp" />
+    <ClCompile Include="pages.cpp\setting_ui.cpp" />
+    <ClCompile Include="pages.cpp\system_admin_addcompany_ui.cpp" />
+    <ClCompile Include="pages.cpp\system_admin_home_ui.cpp" />
     <ClCompile Include="security\search_user.cpp" />
-    <ClCompile Include="pages\system_admin.cpp" />
+    <ClCompile Include="pages.cpp\system_admin.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="program.cpp" />
   </ItemGroup>

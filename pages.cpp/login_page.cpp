@@ -1,4 +1,4 @@
-#include "login_page.h"
+#include "../pages.H/login_page.h"
 
 void loginpage_ui() {
 	loginSTR = "Welcome back!";
@@ -33,10 +33,10 @@ void loginpage_ui() {
 	bcolor(main_boxback_color);
 	fcolor(write_font_color);
 	move(21, centerN(13));
-	bcolor(botton_color);
-	fcolor(botton_border_color);
+	bcolor(button_color);
+	fcolor(button_border_color);
 	Dframe(1, 13);
-	fcolor(botton_font_color);
+	fcolor(button_font_color);
 	move(22, centerN(4));
 	cout << "Login";
 }
@@ -57,10 +57,10 @@ void loginpage() {
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
-			bcolor(botton_color);
-			fcolor(botton_border_color);
+			bcolor(button_color);
+			fcolor(button_border_color);
 			Dframe(1, 13);
-			fcolor(botton_font_color);
+			fcolor(button_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			gotoL;
@@ -81,7 +81,7 @@ void loginpage() {
 			hideC;
 			saveL;
 			move(21, centerN(13));
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			fcolor(hoverd_border_color);
 			Dframe(1, 13);
 			fcolor(hoverd_font_color);
@@ -96,10 +96,10 @@ void loginpage() {
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
 			move(21, centerN(13));
-			bcolor(botton_color);
-			fcolor(botton_border_color);
+			bcolor(button_color);
+			fcolor(button_border_color);
 			Dframe(1, 13);
-			fcolor(botton_font_color);
+			fcolor(button_font_color);
 			move(22, centerN(4));
 			cout << "Login";
 			position = 1;

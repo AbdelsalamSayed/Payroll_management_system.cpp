@@ -27,7 +27,7 @@ void footer(string role,int button_num) {
 		if (button_num == 1) {
 			f3frame(1, 10, 11, 11, 10, button_num);
 			fcolor(hoverd_font_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			move(Bhight - 3, centerLN(1, 11, home));
 			cout << home;
 			bcolor(main_back_color);
@@ -46,7 +46,7 @@ void footer(string role,int button_num) {
 			move(Bhight - 3, centerLN(1, 11, home));
 			cout << home;
 			fcolor(hoverd_font_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			move(Bhight - 3, centerLN(12, 23, add));
 			cout << add;
 			bcolor(main_back_color);
@@ -65,7 +65,7 @@ void footer(string role,int button_num) {
 			move(Bhight - 3, centerLN(12, 23, add));
 			cout << add;
 			fcolor(hoverd_font_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
 			bcolor(main_back_color);
@@ -84,7 +84,7 @@ void footer(string role,int button_num) {
 			move(Bhight - 3, centerLN(24, 35, edit));
 			cout << edit;
 			fcolor(hoverd_font_color);
-			bcolor(hoverd_botton_color);
+			bcolor(hoverd_button_color);
 			move(Bhight - 3, centerLN(37, 45, setting));
 			cout << setting;
 			bcolor(main_back_color);
@@ -120,24 +120,24 @@ void buttons(string& functions) {
 		do
 		{
 			char input = _getch();
-			if (input == 13) { functions = "enter"; } //Enter
-			else if (input == 27) { functions = "esc"; }
+			if (input == 13) { functions = "enter";break; } //Enter
+			else if (input == 27) { functions = "esc";break; }
 			else if (input == 9) { functions = "tab"; break; }//tap
 			else if (input == -32) {
 				input = _getch();
 				if (input == 72) { functions = "up"; } //Arrow Up
-				else if (input == 80) { functions = "down"; } //Arrow Down
-				else if (input == 77) { functions = "right"; } //Arrow Right
-				else if (input == 75) { functions = "left"; } //Arrow Left
+				else if (input == 80) { functions = "down";break; } //Arrow Down
+				else if (input == 77) { functions = "right";break; } //Arrow Right
+				else if (input == 75) { functions = "left"; break; } //Arrow Left
 			}
 
-		} while (functions != "left" && functions != "right" && functions != "enter");
+		} while (true);
 	}
 }
 
 void write_frame(int num, string statu, string& lastinput, string& functions) {
 	char input;
-
+	
 	do {
 		showC;
 		input = _getch();

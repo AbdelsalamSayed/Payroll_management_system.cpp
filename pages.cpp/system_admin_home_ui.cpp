@@ -1,7 +1,6 @@
-#include "system_admin.h"
+#include "../pages.H/system_admin.h"
 
-void system_admin_home_ui() {
-	string system_status;
+void main_ui(string page,int i) {
 	string space = string(Width, double2);
 	body();
 	fcolor(main_bordr_color);
@@ -10,7 +9,14 @@ void system_admin_home_ui() {
 	struct tm ltm;
 	localtime_s(&ltm, &now);
 	string date = to_string(ltm.tm_mday) + "  /  " + to_string(1 + ltm.tm_mon) + "  /  " + to_string(1900 + ltm.tm_year);
-	string dashboard = "SYSTEM ADMINISTRATION CONSOLE (HOME)";
+	string dashboard = "SYSTEM ADMINISTRATION CONSOLE ("+page+")";
+	move(0, 1);
+	red(back);
+	black(Bfont);
+	cout << "X";
+	fcolor(main_bordr_color);
+	bcolor(main_back_color);
+	cout << "ESC";
 	white(Bfont);
 	bold;
 	move(2, centerS(dashboard));
@@ -20,6 +26,16 @@ void system_admin_home_ui() {
 	fcolor(main_bordr_color);
 	move(1, 0);cout << double9 << space << double10;
 	move(3, 0);cout << double9 << space << double10;
+	footer(roles[0], i);
+	fcolor("100;210;255");
+}
+
+
+
+void system_admin_home_ui() {
+	main_ui("Home", 1);
+	string system_status;
+	string space = string(Width, double2);
 	move(14, 0);
 	cout << double9 << space << double10;
 	move(18, 0);
@@ -43,6 +59,5 @@ void system_admin_home_ui() {
 	}
 	move(24, 2);
 	cout << system_status;
-	footer(roles[0], 1);
 	draw_logo(5);
 }

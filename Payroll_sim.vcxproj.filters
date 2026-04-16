@@ -24,7 +24,7 @@
     <ClInclude Include="UI\Head.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pages\login_page.h">
+    <ClInclude Include="pages.H\login_page.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="classes\company.h">
@@ -33,7 +33,7 @@
     <ClInclude Include="security\search_user.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pages\password_page.h">
+    <ClInclude Include="pages.H\password_page.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="classes\employee.h">
@@ -42,7 +42,7 @@
     <ClInclude Include="classes\Appsystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pages\system_admin.h">
+    <ClInclude Include="pages.H\system_admin.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,7 +53,7 @@
     <ClCompile Include="UI\Head.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\login_page.cpp">
+    <ClCompile Include="pages.cpp\login_page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="classes\company.cpp">
@@ -62,7 +62,7 @@
     <ClCompile Include="security\search_user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\password_page.cpp">
+    <ClCompile Include="pages.cpp\password_page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="classes\employee.cpp">
@@ -71,13 +71,19 @@
     <ClCompile Include="classes\Appsystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\system_admin.cpp">
+    <ClCompile Include="pages.cpp\system_admin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\system_admin_home_ui.cpp">
+    <ClCompile Include="pages.cpp\system_admin_home_ui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pages\system_admin_addcompany_ui.cpp">
+    <ClCompile Include="pages.cpp\system_admin_addcompany_ui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pages.cpp\edit_company_ui.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pages.cpp\setting_ui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -21,6 +21,7 @@ int Appsystem::get_company_id(string company_name) {
 			return companylist[i].get_company_id();
 		}
 	}
+	return -1;
 }
 void Appsystem::add_emp(string emp_name, string emp_email, string emp_pass, float emp_salary, string company_name) {
 	int id = get_company_id(company_name);
