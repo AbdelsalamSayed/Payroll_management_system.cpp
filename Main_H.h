@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <Windows.h>
 
+
 inline char double1 = (char)201; // ╔
 inline char double2 = (char)205; // ═
 inline char double3 = (char)187; // ╗
@@ -60,6 +61,8 @@ inline string normal = "normal";
 inline string wrap = "wrap";
 inline string _email = "email";
 inline string pass = "pass";
+inline string Cid = "id";
+inline string notinput = "notinput";
 //====================COLORS====================
 
 constexpr int back = 4;

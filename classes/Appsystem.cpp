@@ -15,6 +15,45 @@ void Appsystem::delete_comp(string company_name) {
 		Appsystem::companylist.erase(Appsystem::companylist.begin() + index);
 	}
 }
+string Appsystem::get_company_name(int company_id) {
+	for (int i = 0;i < Appsystem::get_comp_count();i++) {
+		if (Appsystem::companylist[i].get_company_id() == company_id) {
+			return companylist[i].get_company_name();
+		}
+	}
+	return "!!";
+}
+
+
+int Appsystem::search_company_id(int id){
+	for (int i = 0;i < Appsystem::get_comp_count();i++) {
+		if (Appsystem::companylist[i].get_company_id() == id) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+int Appsystem::comp_emp_num(int id) {
+	int count = 0;
+	for (int i = 0;i < Appsystem::get_emp_count();i++) {
+		if (Appsystem::employeeslist[i].get_cpmp_id() == id) {
+			count++;
+		}
+	}
+	return count;
+}
+int Appsystem::search_company_name(string name){
+	for (int i = 0;i < Appsystem::get_comp_count();i++) {
+		if (Appsystem::companylist[i].get_company_name() == name) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+
 int Appsystem::get_company_id(string company_name) {
 	for (int i = 0;i < Appsystem::get_comp_count();i++) {
 		if (Appsystem::companylist[i].get_company_name() == company_name) {

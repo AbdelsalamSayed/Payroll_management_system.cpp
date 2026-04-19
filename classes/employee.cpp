@@ -43,6 +43,7 @@ void employee::set_pass(const string& new_pass) { employee_password = new_pass; 
 void employee::set_role(const string& new_role) { employee_role = new_role; }
 void employee::set_num(const string& new_num) { employee_num = new_num; }
 
+int employee::get_cpmp_id() { return company_id; }
 float employee::get_leavenum() { return employee_leave; }
 float employee::get_attendance() { return employee_attendance; }
 float employee::get_borrowing() { return employee_borrowing; }

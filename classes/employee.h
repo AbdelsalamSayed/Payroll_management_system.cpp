@@ -32,6 +32,7 @@ public:
 	void set_role(const string& new_role);
 	void set_num(const string& new_num);
 
+	int get_cpmp_id();
 	float get_leavenum();
 	float get_attendance();
 	float get_borrowing();
@@ -49,5 +50,4 @@ public:
 	void set_overtime(float new_overtime);
 	void set_absence(float new_abs);
 	void set_deduction(float new_deduction);
-
 };

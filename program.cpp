@@ -9,9 +9,9 @@ int main() {
 	employee& ss = sys.get_employee_by_email("1234");
 	ss.set_role(roles[0]);
 	loginpage_ui();
-	loginpage();*/
-	
-	system_admin_pages();
+	loginpage();
+	*/
+	edit_com_page();
 
 
 

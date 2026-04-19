@@ -22,6 +22,10 @@ public:
 	void add_comp(string company_name, string company_domain);
 	int get_comp_count();
 	int get_company_id(string company_name);
+	string get_company_name(int id);
+	int search_company_id(int id);
+	int search_company_name(string name);
 	void delete_comp(string company_name);
+	int comp_emp_num(int id);
 };
 

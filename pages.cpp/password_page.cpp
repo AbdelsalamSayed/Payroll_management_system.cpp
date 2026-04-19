@@ -70,11 +70,10 @@ void pass_page(string email) {
 			move(16, centerN(emailbarL) + 2 + input.length());
 			bcolor(main_boxback_color);
 			fcolor(write_font_color);
+			
 		}
-
 		write_frame(emailbarL - 2, pass, input, functions);
 		
-
 		if ((functions == "down" || functions == "tab" )&& position == 1) {
 			saveL;
 			move(21, centerN(13));
@@ -85,8 +84,7 @@ void pass_page(string email) {
 			move(22, centerN(4));
 			cout << "Login";
 			position = 2;
-			buttons(functions);
-
+			buttons(functions="pass");
 		}
 		if ((functions == "up" || functions == "tab") && position == 2) {
 			bcolor(main_boxback_color);
@@ -100,6 +98,7 @@ void pass_page(string email) {
 			cout << "Login";
 			position = 1;
 			gotoL;
+			
 		}
 		if (functions == "enter") {
 			functions = "start";

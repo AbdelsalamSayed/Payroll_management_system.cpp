@@ -125,7 +125,7 @@ void buttons(string& functions) {
 			else if (input == 9) { functions = "tab"; break; }//tap
 			else if (input == -32) {
 				input = _getch();
-				if (input == 72) { functions = "up"; } //Arrow Up
+				if (input == 72) { functions = "up"; break; } //Arrow Up
 				else if (input == 80) { functions = "down";break; } //Arrow Down
 				else if (input == 77) { functions = "right";break; } //Arrow Right
 				else if (input == 75) { functions = "left"; break; } //Arrow Left
@@ -139,6 +139,164 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 	char input;
 	
 	do {
+		if (statu != notinput) {
+			showC;
+			input = _getch();
+			hideC;
+
+			if (input == 13) { functions = "enter"; break; }//Enter
+			else if (input == 27) { functions = "esc"; break; }//ESC
+			else if (input == 9) { functions = "tab"; break; }//tap
+			else if (input == -32) {
+				input = _getch();
+				if (input == 72) { functions = "up"; break; } //Arrow Up
+				else if (input == 80) { functions = "down"; break; } //Arrow Down
+				else if (input == 77 && statu != _email && statu != pass) { functions = "right"; break; } //Arrow Right
+				else if (input == 75 && statu != _email && statu != pass) { functions = "left"; break; } //Arrow Left
+			}
+			//Back Space
+			else if (input == 8) {
+				if (statu == wrap && lastinput.length() != 0) {
+					if (lastinput.length() % num != 0) {
+						cout << "\b \b";
+						lastinput.pop_back();
+					}
+					else if (lastinput.length() % num == 0) {
+						lastinput.pop_back();
+						moveU(1);
+						moveR(num);
+						cout << "\b \b";
+					}
+				}
+				else if (statu == normal && lastinput.length() != 0) {
+					if (lastinput.length() > num && lastinput.length() != num + 1) {
+						lastinput.pop_back();
+					}
+					else if (lastinput.length() <= num) {
+						lastinput.pop_back();
+						cout << "\b \b";
+					}
+					else if (lastinput.length() == num + 1) {
+						lastinput.pop_back();
+						cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
+
+					}
+				}
+				else if ((statu == _email || statu == pass) && lastinput.length() != 0) {
+					if (lastinput.length() == 1) {
+						lastinput.pop_back();
+						cout << "\b \b";
+						fcolor("80;80;80");
+						cout << domain;
+						moveL(domain.length());
+						fcolor(main_font_color);
+					}
+					else if (lastinput.length() > num && lastinput.length() != num + 1) {
+						lastinput.pop_back();
+					}
+					else if (lastinput.length() <= num) {
+						lastinput.pop_back();
+						cout << "\b \b";
+					}
+					else if (lastinput.length() == num + 1) {
+						lastinput.pop_back();
+						cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
+
+					}
+				}
+
+
+				// defult letters or digits
+			}
+			else if (input >= 32 && input <= 126) {
+				if (statu == wrap) {
+					if (lastinput.length() != 0 && lastinput.length() % num == 0) {
+						moveD(1);
+						moveL(num);
+						cout << input;
+						lastinput += input;
+					}
+					else {
+						cout << input;
+						lastinput += input;
+					}
+				}
+				else if (statu == normal) {
+					if (lastinput.length() < num) {
+						cout << input;
+						lastinput += input;
+					}
+					else {
+						cout << "\b\b..";
+						lastinput += input;
+					}
+				}
+				else if (statu == _email) {
+					std::string W(num, ' ');
+					if (lastinput.length() == 0) {
+						cout << W;
+						moveL(num);
+						cout << input;
+						lastinput += input;
+					}
+					else if (lastinput.length() < num) {
+						cout << input;
+						lastinput += input;
+					}
+					else {
+						cout << "\b\b..";
+						lastinput += input;
+
+
+					}
+				}
+				else if (statu == pass) {
+					std::string W(num, ' ');
+					if (lastinput.length() == 0) {
+						cout << W;
+						moveL(num);
+						cout << "*";
+						lastinput += input;
+					}
+					else if (lastinput.length() < num) {
+						cout << "*";
+						lastinput += input;
+					}
+					else {
+						cout << "\b\b..";
+						lastinput += input;
+
+
+					}
+				}
+			}
+		}
+		else if (statu == notinput) {
+			std::string W(num, ' ');
+			cout << W;
+			moveL(num);
+			if (lastinput.length() <= num) {
+				cout << lastinput;
+			}
+			else {
+				for (int i = 0; i < num - 2;i++) {
+					cout << lastinput[i];
+				}
+				cout << "..";
+			}
+			break;
+		}
+	} while (true);
+	hideC;
+}
+
+void id_write(int num, int &id,string &functions) {
+	
+	
+	
+	do {
+		int input;
+		int x = to_string(id).length();
 		showC;
 		input = _getch();
 		hideC;
@@ -149,125 +307,53 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 			input = _getch();
 			if (input == 72) { functions = "up"; break; } //Arrow Up
 			else if (input == 80) { functions = "down"; break; } //Arrow Down
-			else if (input == 77 && statu!=_email && statu != pass) { functions = "right"; break; } //Arrow Right
-			else if (input == 75 && statu != _email && statu != pass) { functions = "left"; break; } //Arrow Left
+			else if (input == 77) { functions = "right"; break; } //Arrow Right
+			else if (input == 75) { functions = "left"; break; } //Arrow Left
 		}
 		//Back Space
 		else if (input == 8) {
-			if (statu == wrap && lastinput.length() != 0) {
-				if (lastinput.length() % num != 0) {
-					cout << "\b \b";
-					lastinput.pop_back();
-				}
-				else if (lastinput.length() % num == 0) {
-					lastinput.pop_back();
-					moveU(1);
-					moveR(num);
-					cout << "\b \b";
-				}
+			if (x > 0 && x <= num) {
+				cout << "\b \b";
+				id = id / 10;
 			}
-			else if (statu == normal && lastinput.length() != 0) {
-				if (lastinput.length() > num && lastinput.length() != num + 1) {
-					lastinput.pop_back();
-				}
-				else if (lastinput.length() <= num) {
-					lastinput.pop_back();
-					cout << "\b \b";
-				}
-				else if (lastinput.length() == num + 1) {
-					lastinput.pop_back();
-					cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
-
-				}
+			if (x > num && x != num + 1) {
+				id = id / 10;
 			}
-			else if ((statu == _email || statu == pass) && lastinput.length() != 0) {
-				if (lastinput.length() == 1) {
-					lastinput.pop_back();
-					cout << "\b \b";
-					fcolor("80;80;80");
-					cout << domain;
-					moveL(domain.length());
-					fcolor(main_font_color);
-				}
-				else if (lastinput.length() > num && lastinput.length() != num + 1) {
-					lastinput.pop_back();
-				}
-				else if (lastinput.length() <= num) {
-					lastinput.pop_back();
-					cout << "\b \b";
-				}
-				else if (lastinput.length() == num + 1) {
-					lastinput.pop_back();
-					cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
+			if (x == num + 1) {
+				id = id / 10;
+				cout << "\b\b" << id % 100;
 
-				}
 			}
-
-
-			// defult letters or digits
 		}
-		else if (input >= 32 && input <= 126) {
-			if (statu == wrap) {
-				if (lastinput.length() != 0 && lastinput.length() % num == 0) {
-					moveD(1);
-					moveL(num);
-					cout << input;
-					lastinput += input;
-				}
-				else {
-					cout << input;
-					lastinput += input;
-				}
-			}
-			else if (statu == normal) {
-				if (lastinput.length() < num) {
-					cout << input;
-					lastinput += input;
-				}
-				else {
-					cout << "\b\b..";
-					lastinput += input;
-				}
-			}
-			else if (statu == _email) {
-				std::string W(num, ' ');
-				if (lastinput.length() == 0) {
-					cout << W;
-					moveL(num);
-					cout << input;
-					lastinput += input;
-				}
-				else if (lastinput.length() < num) {
-					cout << input;
-					lastinput += input;
-				}
-				else {
-					cout << "\b\b..";
-					lastinput += input;
-
-
-				}
-			}
-			else if (statu == pass) {
-				std::string W(num, ' ');
-				if (lastinput.length() == 0) {
-					cout << W;
-					moveL(num);
-					cout << "*";
-					lastinput += input;
-				}
-				else if (lastinput.length() < num) {
-					cout << "*";
-					lastinput += input;
-				}
-				else {
-					cout << "\b\b..";
-					lastinput += input;
-
-
-				}
+		else if (input >= 48 && input <= 57) {
+			if (x<num) {
+				id = id * 10 + (input-48);
+				cout << (input - 48);
+			}if (x == num) {
+				id = id * 10 + (input - 48);
+				cout << "\b\b..";
+			}if (x > num) {
+				id = id * 10 + (input - 48);
+				
 			}
 		}
 	} while (true);
-	hideC;
+	
 }
+void domain_write(int num, string input) {
+	if (input.length() > num) {
+		if (input[input.length()-4] == '.') {
+			for (int i = 0;i < num - 6;i++) {
+				cout << input[i];
+			}
+			cout << "...com";
+		}else {
+			for (int i = 0;i < num - 2;i++) {
+				cout << input[i];
+			}
+			cout << "..";
+		}
+	}
+	else { cout << input; }
+}
+

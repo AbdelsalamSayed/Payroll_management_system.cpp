@@ -36,6 +36,7 @@ void system_admin_home_ui() {
 	main_ui("Home", 1);
 	string system_status;
 	string space = string(Width, double2);
+	fcolor(main_bordr_color);
 	move(14, 0);
 	cout << double9 << space << double10;
 	move(18, 0);
