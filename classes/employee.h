@@ -1,16 +1,19 @@
 #pragma once
 #include "../Main_H.h"
+#include "company.h"
+#include "../Main_H.h"
 
 class employee {
 	inline static int last_emp_id = 1000;
-	int employee_id,company_id;
+	int employee_id;
 	string employee_name, employee_email, employee_password, employee_role, employee_num;
-	float employee_leave, employee_attendance, employee_borrowing, employee_salary, employee_bouns, employee_overtime,
+	float employee_leave, employee_attendance, employee_borrowing, employee_bouns, employee_overtime,
 		taxes,employee_late, employee_absence, employee_deduction;
+	double employee_salary;
 	bool statu_in,locked;
 public:
 
-	employee(string emp_name, string emp_email, string emp_pass, float emp_salary,int company_id);
+	employee(string emp_name, string emp_email, string emp_pass, double emp_salary);
 	string get_name();
 	string get_email();
 	string get_pass();
@@ -32,11 +35,11 @@ public:
 	void set_role(const string& new_role);
 	void set_num(const string& new_num);
 
-	int get_cpmp_id();
+	
 	float get_leavenum();
 	float get_attendance();
 	float get_borrowing();
-	float get_salary();
+	double get_salary();
 	float get_bouns();
 	float get_overtime();
 	float get_absence();
@@ -45,7 +48,7 @@ public:
 	void set_leavenum(float new_leave);
 	void set_attendance(float new_att);
 	void set_borrowing(float new_borr);
-	void set_salary(float new_salary);
+	void set_salary(double new_salary);
 	void set_bouns(float new_bouns);
 	void set_overtime(float new_overtime);
 	void set_absence(float new_abs);

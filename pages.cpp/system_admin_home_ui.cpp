@@ -47,7 +47,7 @@ void system_admin_home_ui() {
 	string total_companys = "Total Companies   --->  " + to_string(sys.get_comp_count());
 	move(16, 2);
 	cout << total_companys;
-	string total_employees = "Total Employees   --->  " + to_string(sys.get_emp_count());
+	string total_employees = "Total Employees   --->  " + to_string(sys.get_emps_count());
 	move(20, 2);
 	cout << total_employees;
 	if (sys.get_system_online()) {

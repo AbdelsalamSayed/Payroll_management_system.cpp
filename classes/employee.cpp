@@ -1,8 +1,7 @@
 #include "employee.h"
 
-employee::employee(string emp_name, string emp_email, string emp_pass, float emp_salary, int _company_id) {
+employee::employee(string emp_name, string emp_email, string emp_pass, double emp_salary) {
 	last_emp_id++;
-	company_id = _company_id;
 	employee_name = emp_name;
 	employee_email = emp_email;
 	employee_password = emp_pass;
@@ -43,11 +42,10 @@ void employee::set_pass(const string& new_pass) { employee_password = new_pass; 
 void employee::set_role(const string& new_role) { employee_role = new_role; }
 void employee::set_num(const string& new_num) { employee_num = new_num; }
 
-int employee::get_cpmp_id() { return company_id; }
 float employee::get_leavenum() { return employee_leave; }
 float employee::get_attendance() { return employee_attendance; }
 float employee::get_borrowing() { return employee_borrowing; }
-float employee::get_salary() { return employee_salary; }
+double employee::get_salary() { return employee_salary; }
 float employee::get_bouns() { return employee_bouns; }
 float employee::get_overtime() { return employee_overtime; }
 float employee::get_absence() { return employee_absence; }
@@ -56,7 +54,7 @@ float employee::get_deduction() { return employee_deduction; }
 void employee::set_leavenum(float new_leave) { employee_leave = new_leave; }
 void employee::set_attendance(float new_att) { employee_attendance = new_att; }
 void employee::set_borrowing(float new_borr) { employee_borrowing = new_borr; }
-void employee::set_salary(float new_salary) { employee_salary = new_salary; }
+void employee::set_salary(double new_salary) { employee_salary = new_salary; }
 void employee::set_bouns(float new_bouns) { employee_bouns = new_bouns; }
 void employee::set_overtime(float new_overtime) { employee_overtime = new_overtime; }
 void employee::set_absence(float new_abs) { employee_absence = new_abs; }

@@ -107,7 +107,7 @@ void loginpage() {
 		}
 		if (functions == "enter"&&!email.empty()) {
 			functions = "start";
-			index = sys.search_emp_email(email);
+			index = sys.current_user_id(email);
 			if (index == -1) {
 				string error0 = "Email not registered in the system.\a";
 				string error1 = "Please contact HR";

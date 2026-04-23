@@ -2,6 +2,7 @@
 #include <iostream>
 #include <conio.h>
 #include <string>
+#include <sstream>
 #include <cstdio>
 #include <vector>
 #include <algorithm>
@@ -61,6 +62,7 @@ inline string normal = "normal";
 inline string wrap = "wrap";
 inline string _email = "email";
 inline string pass = "pass";
+inline string _pass = "_pass";
 inline string Cid = "id";
 inline string notinput = "notinput";
 //====================COLORS====================

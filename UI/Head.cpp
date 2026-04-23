@@ -94,10 +94,6 @@ void footer(string role,int button_num) {
 
 }
 
-void login_head() {
-
-}
-
 void buttons(string& functions) {
 	if (functions == "login" || functions == "pass") {
 		do
@@ -182,14 +178,25 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 
 					}
 				}
-				else if ((statu == _email || statu == pass) && lastinput.length() != 0) {
+				else if ((statu == _email || statu == pass|| statu == _pass) && lastinput.length() != 0) {
 					if (lastinput.length() == 1) {
-						lastinput.pop_back();
-						cout << "\b \b";
-						fcolor("80;80;80");
-						cout << domain;
-						moveL(domain.length());
-						fcolor(main_font_color);
+						if (statu == _email) {
+							lastinput.pop_back();
+							cout << "\b \b";
+						}
+						else if (statu == pass) {
+							lastinput.pop_back();
+							cout << "\b \b";
+							fcolor("80;80;80");
+							cout << "Password";
+							moveL(8);
+							fcolor(main_font_color);
+						}
+						else if (statu == _pass) {
+							lastinput.pop_back();
+							cout << "\b \b";
+						}
+						
 					}
 					else if (lastinput.length() > num && lastinput.length() != num + 1) {
 						lastinput.pop_back();
@@ -199,8 +206,14 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 						cout << "\b \b";
 					}
 					else if (lastinput.length() == num + 1) {
-						lastinput.pop_back();
-						cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
+						if (statu == _email) {
+							lastinput.pop_back();
+							cout << "\b\b" << lastinput[num - 2] << lastinput[num - 1];
+						}
+						else if (statu == pass||statu == _pass) {
+							lastinput.pop_back();
+							cout << "\b\b" << "**";
+						}
 
 					}
 				}
@@ -250,7 +263,7 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 
 					}
 				}
-				else if (statu == pass) {
+				else if (statu == pass||statu==_pass) {
 					std::string W(num, ' ');
 					if (lastinput.length() == 0) {
 						cout << W;
@@ -290,17 +303,16 @@ void write_frame(int num, string statu, string& lastinput, string& functions) {
 	hideC;
 }
 
-void id_write(int num, int &id,string &functions) {
-	
+void id_write(int num, double &id,string &functions) {
+	string str_id;
 	
 	
 	do {
-		int input;
-		int x = to_string(id).length();
+		char input;
 		showC;
 		input = _getch();
 		hideC;
-		if (input == 13) { functions = "enter"; break; }//Enter
+		if (input == 13 && !str_id.empty()) { functions = "enter"; id = stod(str_id); break; }//Enter
 		else if (input == 27) { functions = "esc"; break; }//ESC
 		else if (input == 9) { functions = "tab"; break; }//tap
 		else if (input == -32) {
@@ -312,28 +324,28 @@ void id_write(int num, int &id,string &functions) {
 		}
 		//Back Space
 		else if (input == 8) {
-			if (x > 0 && x <= num) {
+			if (str_id.length() > 0 && str_id.length() <= num) {
 				cout << "\b \b";
-				id = id / 10;
+				str_id.pop_back();
 			}
-			if (x > num && x != num + 1) {
-				id = id / 10;
+			else if (str_id.length() > num && str_id.length() != num + 1) {
+				str_id.pop_back();
 			}
-			if (x == num + 1) {
-				id = id / 10;
-				cout << "\b\b" << id % 100;
-
+			else if (str_id.length() == num + 1) {
+				cout << "\b\b" << str_id[num - 2] << str_id[num - 1];
+				str_id.pop_back();
 			}
 		}
-		else if (input >= 48 && input <= 57) {
-			if (x<num) {
-				id = id * 10 + (input-48);
-				cout << (input - 48);
-			}if (x == num) {
-				id = id * 10 + (input - 48);
+		else if (input >= '0' && input <= '9'||input=='.') {
+			
+			if (str_id.length() < num) {
+				str_id += input;
+				cout << input;
+			}else if (str_id.length() == num) {
+				str_id += input;
 				cout << "\b\b..";
-			}if (x > num) {
-				id = id * 10 + (input - 48);
+			}else if (str_id.length() > num) {
+				str_id += input;
 				
 			}
 		}
