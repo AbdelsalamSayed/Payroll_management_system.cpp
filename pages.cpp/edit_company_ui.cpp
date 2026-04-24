@@ -1,7 +1,7 @@
 #include "../pages.H/system_admin.h"
 
 
-void edit_com_page() {
+void edit_com_page(employee& current_user) {
 
 	string found;
 	main_ui("Edit Company", 3);
@@ -32,7 +32,7 @@ void edit_com_page() {
 		}
 		buttons(functions = "super_admin");
 
-		if (functions == "esc") { system_admin_pages(); }
+		if (functions == "esc") { system_admin_pages(current_user); }
 		if ((functions == "down" || functions == "tab") && position == 1) {
 			hoverd_button;
 			move(14, 15);
@@ -87,7 +87,7 @@ void edit_com_page() {
 					fcolor(main_font_color);
 					write_frame(28, normal, Cname, functions);
 					transform(Cname.begin(), Cname.end(), Cname.begin(), toupper);
-					if (functions == "esc") { edit_com_page(); }
+					if (functions == "esc") { edit_com_page(current_user); }
 					if (functions == "enter") {
 						if (sys.search_company_name(Cname) != -1) {
 							found = "name";
@@ -108,7 +108,7 @@ void edit_com_page() {
 					move(11, 10);
 					fcolor(main_font_color);
 					id_write(28, Cid, functions);
-					if (functions == "esc") { edit_com_page(); }
+					if (functions == "esc") { edit_com_page(current_user); }
 					if (functions == "enter") {
 						if (sys.search_company_id(Cid) != -1) {
 							found = "id";
@@ -128,7 +128,7 @@ void edit_com_page() {
 					main_ui("Edit Company", 3);
 					position = 0;
 					do {
-						if (functions == "esc") { edit_com_page(); }
+						if (functions == "esc") { edit_com_page(current_user); }
 						if (position == 0 || ((functions == "up" || functions == "tab") && (position == 2 || position == 4))) {
 
 							bcolor(main_back_color);
@@ -244,7 +244,7 @@ void edit_com_page() {
 							fcolor(main_font_color);
 							move(17, 10);
 							write_frame(28, normal, new_name, functions);
-							if (functions == "esc") { edit_com_page(); }
+							if (functions == "esc") { edit_com_page(current_user); }
 							if (functions == "enter") {
 								transform(new_name.begin(), new_name.end(), new_name.begin(), toupper);
 								if (sys.search_company_name(new_name) == -1 && new_name.length() >= 4 && new_name.length() <= 16 && sys.get_company_by_id(sys.get_company_id(Cname)).get_company_name() != new_name && all_of(new_name.begin(), new_name.end(), isalnum) && !isdigit(new_name[0])) {
@@ -260,7 +260,7 @@ void edit_com_page() {
 									bcolor(main_boxback_color);
 									fcolor(main_font_color);
 									Sleep(2000);
-									edit_com_page();
+									edit_com_page(current_user);
 								}
 
 								else {
@@ -277,7 +277,7 @@ void edit_com_page() {
 										cout << space;
 										moveL(28);
 										write_frame(28, normal, new_name, functions);
-										if (functions == "esc") { edit_com_page(); }
+										if (functions == "esc") { edit_com_page(current_user); }
 										transform(new_name.begin(), new_name.end(), new_name.begin(), toupper);
 										if (sys.search_company_name(new_name) == -1 && new_name.length() >= 4 && all_of(new_name.begin(), new_name.end(), isalnum) && !isdigit(new_name[0])) {
 											sys.get_company_by_id(sys.get_company_id(Cname)).set_company_name(new_name);
@@ -292,7 +292,7 @@ void edit_com_page() {
 											bcolor(main_boxback_color);
 											fcolor(main_font_color);
 											Sleep(2000);
-											edit_com_page();
+											edit_com_page(current_user);
 											break;
 										}
 
@@ -303,12 +303,12 @@ void edit_com_page() {
 
 						}
 						else if (functions == "enter" && (position == 2 || position == 4)) {
-							add_emp_page(Cname);
+							add_emp_page(Cname, current_user);
 
 
 						}
 						else if (functions == "enter" && position == 3) {
-							delete_emp_page(Cname);
+							delete_emp_page(Cname, current_user);
 
 
 						}

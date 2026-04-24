@@ -1,6 +1,6 @@
 #include "../pages.H/system_admin.h"
 
-void system_admin_pages() {
+void system_admin_pages(employee& current_user) {
 	system_admin_home_ui();
 	position = 1;
 	string functions = "start";
@@ -75,7 +75,7 @@ void system_admin_pages() {
 				}
 				if (functions == "enter" && position == 2) {
 					position = 1;
-					system_admin_pages();
+					system_admin_pages(current_user);
 				}
 			} while (true);
 			
@@ -148,17 +148,17 @@ void system_admin_pages() {
 				break;
 			}
 			else if (position == 2 || position == 6) {
-				add_comp_page();
+				add_comp_page(current_user);
 				break;
 
 			}
 			else if (position == 3 || position == 5) {
-				edit_com_page();
+				edit_com_page(current_user);
 				break;
 
 			}
 			else if (position == 4) {
-				super_setting_page();
+				super_setting_page(current_user);
 				break;
 
 			}
@@ -169,7 +169,7 @@ void system_admin_pages() {
 }
 
 
-void add_comp_page() {
+void add_comp_page(employee& current_user) {
 	position = 0;
 	string functions = "start",comp_name, comp_domain;
 	system_admin_addcompany_ui();
@@ -192,7 +192,7 @@ void add_comp_page() {
 				write_frame(37, normal, comp_name, functions);
 			} while (functions != "tab" && functions != "enter" && functions != "down" && functions != "esc");
 		}
-		if (functions == "esc") { system_admin_pages(); }
+		if (functions == "esc") { system_admin_pages(current_user); }
 		if (comp_name.empty()) { functions = "start"; continue; }
 		transform(comp_name.begin(), comp_name.end(), comp_name.begin(), toupper);
 		if (sys.get_company_id(comp_name) == -1) {
@@ -261,7 +261,7 @@ void add_comp_page() {
 					
 				}
 				if (functions == "enter" && position == 2) {
-					system_admin_pages();
+					system_admin_pages(current_user);
 				}
 				if (functions == "enter" && position == 1) {
 					sys.add_comp(comp_name);
@@ -276,7 +276,7 @@ void add_comp_page() {
 					bcolor(main_boxback_color);
 					fcolor(main_font_color);
 					Sleep(2000);
-					system_admin_pages();
+					system_admin_pages(current_user);
 				}
 				
 			}
@@ -320,6 +320,6 @@ void add_comp_page() {
 }
 
 
-void super_setting_page() {
-	super_setting_ui();
+void super_setting_page(employee& current_user) {
+	super_setting_ui(current_user);
 }

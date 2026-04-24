@@ -1,6 +1,25 @@
 #include "Appsystem.h"
 bool Appsystem::get_system_online() { return system_online; }
-void Appsystem::set_system_online(bool online) { system_online = online; }
+void Appsystem::set_system_online(bool online) { 
+	if (online == true) {
+		for (int i = 0;i < Appsystem::get_comp_count();i++) {
+			for (int j = 0;j < Appsystem::companylist[i].get_emp_count();j++) {
+				Appsystem::companylist[i].get_emp(j).set_locked(false);
+			}
+		}
+		system_online = online;
+	}
+	else {
+		for (int i = 0;i < Appsystem::get_comp_count();i++) {
+			for (int j = 0;j < Appsystem::companylist[i].get_emp_count();j++) {
+				if (Appsystem::companylist[i].get_emp(j).get_role()!=roles[0])
+				Appsystem::companylist[i].get_emp(j).set_locked(true);
+			}
+		}
+		system_online = online;
+	}
+	
+}
 
 void Appsystem::add_comp(string company_name) {
 	transform(company_name.begin(), company_name.end(), company_name.begin(), tolower);

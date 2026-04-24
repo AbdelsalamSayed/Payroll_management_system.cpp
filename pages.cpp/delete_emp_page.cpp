@@ -1,6 +1,6 @@
 #include "../pages.H/system_admin.h"
 
-void delete_emp_page(string company_name) {
+void delete_emp_page(string company_name, employee& current_user) {
 	company& comp = sys.get_company_by_id(sys.get_company_id(company_name));
 	position = 0;
 	main_ui("Setting", 3);
@@ -22,7 +22,7 @@ void delete_emp_page(string company_name) {
 		move(10, 9);
 		fcolor(main_font_color);
 		id_write(28, emp_id, functions);
-		if (functions == "esc") { edit_com_page(); }
+		if (functions == "esc") { edit_com_page(current_user); }
 		if (functions == "enter") {
 			move(13, 1);
 			string spaces = string(45, ' ');
@@ -62,11 +62,11 @@ void delete_emp_page(string company_name) {
 					bcolor(main_boxback_color);
 					fcolor(main_font_color);
 					Sleep(2000);
-					edit_com_page();
+					edit_com_page(current_user);
 
 				}
 				else {
-					edit_com_page();
+					edit_com_page(current_user);
 				}
 			}else {
 				

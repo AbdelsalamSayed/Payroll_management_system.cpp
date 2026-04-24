@@ -47,10 +47,12 @@ void passpage_ui(string email) {
 
 
 void pass_page(string email) {
+	passpage_ui(email);
 	string input, functions="start";
 	
 	do {
 		position = 1;
+		if (functions == "esc") { loginpage(); }
 		if (functions == "start") {
 			input = "";
 			bcolor(main_boxback_color);
@@ -143,13 +145,13 @@ void pass_page(string email) {
 	} while (true);
 	employee& current_user = sys.get_employee_by_email(email);
 	if (current_user.get_role() == roles[0]) {
-		system_admin_pages();
+		system_admin_pages(current_user);
 	}
 	else if (current_user.get_role() == roles[1]) {
-
+		
 	}
 	else if (current_user.get_role() == roles[2]) {
-
+		
 	}
 	else if (current_user.get_role() == roles[3]) {
 

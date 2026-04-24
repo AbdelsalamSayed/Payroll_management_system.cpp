@@ -1,6 +1,6 @@
 #include "../pages.H/system_admin.h"
 
-void add_emp_page(string company_name) {
+void add_emp_page(string company_name,employee& current_user) {
 	position = 0;
 	string functions = "start", emp_name, emp_email, emp_pass;
 	double emp_salary;
@@ -37,7 +37,7 @@ void add_emp_page(string company_name) {
 		fcolor(main_font_color);
 		move(6, ((string)"Full employee name: ").length()+1);
 		write_frame(25, normal, emp_name, functions);
-		if (functions == "esc") { edit_com_page(); }
+		if (functions == "esc") { edit_com_page(current_user); }
 		if (functions == "enter" && emp_name.empty()) { functions = "start"; continue; }
 		if (functions == "enter" && !emp_name.empty()) {
 			if (!all_of(emp_name.begin(), emp_name.end(), [](char c) { return isalpha(c) || c == ' '; })) {
@@ -55,7 +55,7 @@ void add_emp_page(string company_name) {
 			write_frame(29, notinput, emp_email, functions);
 			move(12, ((string)"Employee password: ").length() + 1);
 			write_frame(26, _pass, emp_pass, functions);
-			if (functions == "esc") { edit_com_page(); }
+			if (functions == "esc") { edit_com_page(current_user); }
 			if (functions == "enter" && emp_pass.empty()) { functions = "start"; continue; }
 			if (emp_pass.length() < 8 || !any_of(emp_pass.begin(), emp_pass.end(), ::isupper) || !any_of(emp_pass.begin(), emp_pass.end(), ::islower) || !any_of(emp_pass.begin(), emp_pass.end(), ::isdigit) || !any_of(emp_pass.begin(), emp_pass.end(), [](char c) { return ispunct(c); })) {
 				functions = "start";
@@ -72,7 +72,7 @@ void add_emp_page(string company_name) {
 			}
 			move(15, ((string)"Employee salary: ").length() + 1);
 			id_write(28, emp_salary, functions);
-			if (functions == "esc") { edit_com_page(); }
+			if (functions == "esc") { edit_com_page(current_user); }
 			if (emp_salary <= 0) {
 				functions = "start";
 				move(15, ((string)"Employee salary: ").length() + 1);
@@ -111,8 +111,8 @@ void add_emp_page(string company_name) {
 	green(font);
 	cout << "Employee added successfully.";
 	Sleep(2000);
-	system_admin_pages();
+	system_admin_pages(current_user);
 
 
-	if (functions == "esc") { edit_com_page(); }
+	if (functions == "esc") { edit_com_page(current_user); }
 }

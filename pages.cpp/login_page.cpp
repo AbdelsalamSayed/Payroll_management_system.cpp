@@ -42,6 +42,7 @@ void loginpage_ui() {
 }
 
 void loginpage() {
+	loginpage_ui();
 	string email;
 	
 	string functions = "start";
@@ -149,7 +150,7 @@ void loginpage() {
 	
 	} while (true);
 
-		passpage_ui(email);
+		
 		pass_page(email);
 
 }

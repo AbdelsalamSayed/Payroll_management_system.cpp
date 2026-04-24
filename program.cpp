@@ -7,7 +7,7 @@ int main() {
 	sys.add_comp("ecuuu");
 	sys.add_comp("test");
 	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
-	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
+	sys.get_company_by_id(1).add_emp("abdo", "123", "123", 5000);
 	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
 	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
 	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
@@ -33,7 +33,9 @@ int main() {
 	sys.get_company_by_id(1).add_emp("abdo", "1234", "1234", 5000);
 	employee& ss = sys.get_employee_by_email("1234");
 	ss.set_role(roles[0]);
-	loginpage_ui();
+	employee& sk = sys.get_employee_by_email("123");
+	sk.set_role(roles[1]);
+	
 	loginpage();
 	
 	
