@@ -2,7 +2,8 @@
 
 
 void edit_com_page() {
-	string found ;
+
+	string found;
 	main_ui("Edit Company", 3);
 	string functions, Cname;
 	string space = string(28, ' ');
@@ -88,11 +89,14 @@ void edit_com_page() {
 					transform(Cname.begin(), Cname.end(), Cname.begin(), toupper);
 					if (functions == "esc") { edit_com_page(); }
 					if (functions == "enter") {
-						if (sys.search_company_name(Cname) != -1) { found = "name"; }
+						if (sys.search_company_name(Cname) != -1) {
+							found = "name";
+							Cid = sys.get_company_id(Cname);
+						}
 					}
 				}
 				if (position == 2) {
-					Cid = 0 ;
+					Cid = 0;
 					bcolor(main_back_color);
 					fcolor(main_font_color);
 					move(8, centerS(((string)"Enter company ID")));
@@ -106,7 +110,10 @@ void edit_com_page() {
 					id_write(28, Cid, functions);
 					if (functions == "esc") { edit_com_page(); }
 					if (functions == "enter") {
-						if (sys.search_company_id(Cid) != -1) { found = "id"; }
+						if (sys.search_company_id(Cid) != -1) {
+							found = "id";
+							Cname = sys.get_company_name(sys.get_company_id(sys.get_company_name(Cid)));
+						}
 					}
 					else {
 						move(11, 10);
@@ -117,7 +124,7 @@ void edit_com_page() {
 						continue;
 					}
 				}
-				if (found=="id"|| found == "name") {
+				if (found == "id" || found == "name") {
 					main_ui("Edit Company", 3);
 					position = 0;
 					do {
@@ -126,15 +133,16 @@ void edit_com_page() {
 
 							bcolor(main_back_color);
 							green(font);
-							
+
 							if (found == "name") {
-								domain = "Company domain ---> "+ sys.get_company_by_id(sys.get_company_id(Cname)).get_company_domain();
+								domain = "Company domain ---> " + sys.get_company_by_id(sys.get_company_id(Cname)).get_company_domain();
 								move(7, centerS(domain));
 								cout << domain;
 								move(5, centerS((Cname + " Company")));
 								cout << Cname + " Company";
-							}else{
-								domain = "Company domain ---> "+ sys.get_company_by_id(Cid).get_company_domain();
+							}
+							else {
+								domain = "Company domain ---> " + sys.get_company_by_id(Cid).get_company_domain();
 								move(7, centerS(domain));
 								cout << domain;
 								Cname = sys.get_company_name(Cid);
@@ -195,7 +203,7 @@ void edit_com_page() {
 							}
 							functions = "super_admin";
 						}
-						else if (((functions == "down" || functions == "tab") && position == 2)|| (functions == "down" && position == 4)) {
+						else if (((functions == "down" || functions == "tab") && position == 2) || (functions == "down" && position == 4)) {
 							move(9, 8);
 							non_hoverd_button;
 							Dframe(1, 30);
@@ -287,65 +295,34 @@ void edit_com_page() {
 											edit_com_page();
 											break;
 										}
-										
+
 									} while (true);
 
 								}
 							}
 
 						}
-						else if (functions == "enter" && position == 2) {
+						else if (functions == "enter" && (position == 2 || position == 4)) {
 							add_emp_page(Cname);
-							
+
 
 						}
-						else if (functions == "enter" && position == 4) {
-							
-						}
-								
+						else if (functions == "enter" && position == 3) {
+							delete_emp_page(Cname);
 
-					} while (true);
+
+						}
+					}while (true);
 				}
 				else {
 					move(14, centerS(((string)"Company Name not found.")));
 					red(Bfont);
 					bcolor(main_back_color);
-					cout << "Company Name not foun.";
+					cout << "Company Name not found.";
 					fcolor(main_font_color);
-				}
-			} while (true);
-		}
-		if (functions == "enter" && position == 2) {
-			main_ui("Edit Company", 3);
-			do {
-				string space = string(28, ' ');
-				move(8, centerS(((string)"Enter company ID")));
-				cout << "Enter company ID";
-				move(10, centerN(30));
-				fcolor(main_boxborder_color);
-				bcolor(main_boxback_color);
-				Dframe(1, 30);
-				move(11, 10);
-				fcolor(main_font_color);
-				cout << space;
-				moveL(28);
-				id_write(28, Cid, functions);
-				if (functions == "esc") { edit_com_page(); }
-				if (functions == "enter") {
-					if (sys.search_company_id(Cid) != -1) {
-						
 					}
-					else {
-						move(14, centerS(((string)"Company ID not found.")));
-						red(font);
-						bcolor(main_back_color);
-						cout << "Company ID not foun.";
-						fcolor(main_font_color);
-					}
-				}
-			} while (true);
-		}
 
-	} while (true);
+			} while (true);
+		}
+	}while (true);
 }
-

@@ -297,13 +297,19 @@ void add_comp_page() {
 		
 		}
 		else {
-			system_admin_pages();
-
+			string error = "This name company already exists.";
+			move(7, 5);
+			string spaces = string(37, ' ');
+			cout << spaces;
+			moveL(37);
+			move(19, centerS(error));
+			red(Bfont);
+			bcolor(main_back_color);
+			cout << error;
+			bcolor(main_boxback_color);
+			fcolor(main_font_color);
+			functions = "start";
 		}
-
-
-
-
 
 		
 

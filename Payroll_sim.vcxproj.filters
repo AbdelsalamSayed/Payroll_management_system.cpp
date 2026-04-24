@@ -89,5 +89,8 @@
     <ClCompile Include="pages.cpp\add_emp_page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pages.cpp\delete_emp_page.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
