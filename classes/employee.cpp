@@ -1,6 +1,8 @@
 #include "employee.h"
 
-employee::employee(string emp_name, string emp_email, string emp_pass, double emp_salary) {
+employee::employee(string emp_name, string emp_email, string emp_pass, double emp_salary, string _comp_name) {
+	
+	comp_name = _comp_name;
 	last_emp_id++;
 	employee_name = emp_name;
 	employee_email = emp_email;
@@ -20,7 +22,7 @@ employee::employee(string emp_name, string emp_email, string emp_pass, double em
 	locked = false;
 	taxes = 0;
 }
-
+string employee::get_comp_name() { return comp_name; }
 string employee::get_name() { return employee_name; }
 string employee::get_email() { return employee_email; }
 string employee::get_pass() { return employee_password; }

@@ -4,7 +4,7 @@ void add_emp_page(string company_name,employee& current_user) {
 	position = 0;
 	string functions = "start", emp_name, emp_email, emp_pass;
 	double emp_salary;
-	main_ui("Add Employee", 3);
+	main_ui("Add Employee", 3,roles[0]);
 	bcolor(main_back_color);
 	fcolor(main_boxborder_color);
 	move(6, 1);
@@ -91,7 +91,7 @@ void add_emp_page(string company_name,employee& current_user) {
 
 	} while (true);
 
-	sys.get_company_by_id(sys.get_company_id(company_name)).add_emp(emp_name, emp_email, emp_pass, emp_salary);
+	sys.get_company_by_id(sys.get_company_id(company_name)).add_emp(emp_name, emp_email, emp_pass, emp_salary, company_name);
 	move(18, 1);
 	cout << string(45, ' ');
 	move(19, 1);

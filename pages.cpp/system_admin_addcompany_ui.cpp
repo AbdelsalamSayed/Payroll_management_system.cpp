@@ -2,7 +2,7 @@
 
 void system_admin_addcompany_ui() {
 	
-	main_ui("Add Company", 2);
+	main_ui("Add Company", 2,roles[0]);
 	move(5,centerS(((string)"Company Name")));
 	cout << "Company Name";
 	move(10,centerS(((string)"Company Domain")));

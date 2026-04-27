@@ -4,7 +4,7 @@
 void edit_com_page(employee& current_user) {
 
 	string found;
-	main_ui("Edit Company", 3);
+	main_ui("Edit Company", 3,roles[0]);
 	string functions, Cname;
 	string space = string(28, ' ');
 	double Cid = 0;
@@ -68,7 +68,7 @@ void edit_com_page(employee& current_user) {
 			position = 1;
 		}
 		if (functions == "enter") {
-			main_ui("Edit Company", 3);
+			main_ui("Edit Company", 3,roles[0]);
 			move(11, 10);
 			fcolor(main_font_color);
 			cout << space;
@@ -125,7 +125,7 @@ void edit_com_page(employee& current_user) {
 					}
 				}
 				if (found == "id" || found == "name") {
-					main_ui("Edit Company", 3);
+					main_ui("Edit Company", 3,roles[0]);
 					position = 0;
 					do {
 						if (functions == "esc") { edit_com_page(current_user); }
@@ -228,7 +228,7 @@ void edit_com_page(employee& current_user) {
 						}
 
 						if (functions == "enter" && position == 1) {
-							main_ui("Edit Company", 3);
+							main_ui("Edit Company", 3,roles[0]);
 							string new_name;
 							move(6, centerS(((string)"Current company name is " + Cname)));
 							cout << "Current company name is " + Cname;

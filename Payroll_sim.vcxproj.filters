@@ -92,5 +92,8 @@
     <ClCompile Include="pages.cpp\delete_emp_page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pages.cpp\admins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

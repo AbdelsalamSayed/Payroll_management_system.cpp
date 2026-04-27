@@ -1,7 +1,7 @@
 #include "../pages.H/system_admin.h"
 
 void super_setting_ui(employee& current_user) {
-	main_ui("Setting", 4);
+	main_ui("Setting", 4,roles[0]);
 	string functions;
 	int position = 0;
 	hoverd_button;
@@ -203,7 +203,7 @@ void super_setting_ui(employee& current_user) {
 
 
 void change_sys_status(employee& current_user) {
-	main_ui("Setting", 4);
+	main_ui("Setting", 4,roles[0]);
 	string functions;
 	int position = 0;
 	
@@ -289,7 +289,7 @@ void change_sys_status(employee& current_user) {
 
 
 void change_pass_page(employee& current_user) {
-	main_ui("Setting", 4);
+	main_ui("Setting", 4,roles[0]);
 	string functions, _pass,new_pass;
 	move(10, 7);
 	fcolor(main_boxborder_color);

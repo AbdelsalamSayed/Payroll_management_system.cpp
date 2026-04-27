@@ -20,6 +20,7 @@ void body() {
 
 void footer(string role,int button_num) {
 	string home = "Home",add = "Add  Comp", edit = "Edit Comp", setting = "Settings";
+
 	bcolor(main_back_color);
 	fcolor(main_bordr_color);
 	move(Bhight - 4, 0);
@@ -86,6 +87,63 @@ void footer(string role,int button_num) {
 			fcolor(hoverd_font_color);
 			bcolor(hoverd_button_color);
 			move(Bhight - 3, centerLN(37, 45, setting));
+			cout << setting;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+		}
+	}
+	else if (role == roles[1]) {
+		if (button_num == 0) {
+			f3frame(1, 14, 15, 14, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 15, home));
+			cout << home;
+			move(Bhight - 3, centerLN(18, 29, edit));
+			cout << edit;
+			move(Bhight - 3, centerLN(33, 45, setting));
+			cout << setting;
+		}
+		if (button_num == 1) {
+			f3frame(1, 14, 15, 14, button_num);
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_button_color);
+			move(Bhight - 3, centerLN(1, 15, home));
+			cout << home;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			
+			move(Bhight - 3, centerLN(18, 29, edit));
+			cout << edit;
+			move(Bhight - 3, centerLN(33, 45, setting));
+			cout << setting;
+		}
+		else if (button_num == 2) {
+			f3frame(1, 14, 15, 14, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 15, home));
+			cout << home;
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_button_color);
+			move(Bhight - 3, centerLN(18, 29, edit));
+			cout << edit;
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(33, 45, setting));
+			cout << setting;
+		}
+		else if (button_num == 3) {
+			f3frame(1, 14, 15, 14, button_num);
+			bcolor(main_back_color);
+			fcolor(main_font_color);
+			move(Bhight - 3, centerLN(1, 15, home));
+			cout << home;
+			move(Bhight - 3, centerLN(18, 29, edit));
+			cout << edit;
+			fcolor(hoverd_font_color);
+			bcolor(hoverd_button_color);
+			move(Bhight - 3, centerLN(33, 45, setting));
 			cout << setting;
 			bcolor(main_back_color);
 			fcolor(main_font_color);

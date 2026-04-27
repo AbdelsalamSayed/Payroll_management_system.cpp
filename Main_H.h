@@ -39,7 +39,7 @@ inline char single6 = (char)217; // ┘
 using namespace std;
 inline const int try_num = 5;
 inline int try_count = try_num;
-inline const string roles[4] = {"system_admin","ceo","hr","staff"};
+inline const string roles[4] = {"system_admin","comp_admins","staff"};
 
 constexpr int Width = 45;
 constexpr int Hhight = 1;
@@ -268,6 +268,160 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_button_color);
 		cout << double7 << W4 << double6;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+
+	}
+}
+inline void f3frame(int h, int w1, int w2, int w3, int num) {
+	std::string W1(w1, double2);
+	std::string W2(w2, double2);
+	std::string W3(w3, double2);
+	
+
+	std::string s1(w1, ' ');
+	std::string s2(w2, ' ');
+	std::string s3(w3, ' ');
+	
+	if (num == 0) {
+
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double9 << W1 << double8;
+		cout << W2 << double8<< W3 << double10;
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + 5);
+			cout << double4 << s1 << double4;
+			cout << s2 << double4 << s3 << double4;
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + 5);
+		cout << double5 << W1 << double7;
+		cout << W2 << double7 << W3 <<  double6;
+
+
+	}
+	else if (num == 1) {
+
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double9 << W1 << double8;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << W2 << double8<< W3 << double10;
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + 5);
+			fcolor(hoverd_border_color);
+			bcolor(hoverd_button_color);
+			cout << double4 << s1 << double4;
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			cout << s2 << double4 << s3 << double4;
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + 5);
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double5 << W1 << double7;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << W2 << double7 << W3 <<  double6;
+
+
+	}
+	else if (num == 2) {
+
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double9 << W1;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double8 << W2 << double8;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << W3 << double8 << double10;
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + 5);
+			cout << double4 << s1;
+			fcolor(hoverd_border_color);
+			bcolor(hoverd_button_color);
+			cout << double4 << s2 << double4;
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			cout << s3 << double4;
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + 5);
+		cout << double5 << W1;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double7 << W2 << double7;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << W3 << double6;
+	}
+	else if (num == 3) {
+
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double9 << W1<<double8 << W2 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double8<< W3 << double8;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double10;
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + 5);
+			cout << double4 << s1 << double4 << s2 ;
+			fcolor(hoverd_border_color);
+			bcolor(hoverd_button_color);
+			cout << double4<< s3 << double4;
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+			cout << double4;
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + 5);
+		cout << double5 << W1<< double7 << W2 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double7<< W3 << double7;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double6;
+
+	}
+	else if (num == 4) {
+
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		cout << double9 << W1<<double8 << W2 << double8<< W3 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double10;
+		bcolor(main_back_color);
+		fcolor(main_bordr_color);
+		for (int i = 0;i < h;i++) {
+			moveD(1);
+			moveL(w1 + w2 + w3 + 5);
+			cout << double4 << s1 << double4 << s2 << double4<< s3 ;
+			fcolor(hoverd_border_color);
+			bcolor(hoverd_button_color);
+			cout << double4;
+			bcolor(main_back_color);
+			fcolor(main_bordr_color);
+		}
+		moveD(1);
+		moveL(w1 + w2 + w3 + 5);
+		cout << double5 << W1<< double7 << W2 << double7<< W3 ;
+		fcolor(hoverd_border_color);
+		bcolor(hoverd_button_color);
+		cout << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
 

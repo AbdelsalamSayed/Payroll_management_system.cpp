@@ -29,8 +29,8 @@ int company::comp_emp_num() {
 	return employeeslist.size();
 }
 
-void company::add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary) {
-	employee new_emp = employee(emp_name, emp_email, emp_pass, emp_salary);
+void company::add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary,string _comp_name) {
+	employee new_emp = employee(emp_name, emp_email, emp_pass, emp_salary, _comp_name);
 	employeeslist.push_back(new_emp);
 }
 

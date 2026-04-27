@@ -143,6 +143,7 @@
     <ClCompile Include="classes\company.cpp" />
     <ClCompile Include="classes\employee.cpp" />
     <ClCompile Include="pages.cpp\add_emp_page.cpp" />
+    <ClCompile Include="pages.cpp\admins.cpp" />
     <ClCompile Include="pages.cpp\delete_emp_page.cpp" />
     <ClCompile Include="pages.cpp\edit_company_ui.cpp" />
     <ClCompile Include="pages.cpp\login_page.cpp" />

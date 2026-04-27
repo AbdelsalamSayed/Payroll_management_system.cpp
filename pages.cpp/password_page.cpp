@@ -148,12 +148,9 @@ void pass_page(string email) {
 		system_admin_pages(current_user);
 	}
 	else if (current_user.get_role() == roles[1]) {
-		
+		admins_page(current_user);
 	}
 	else if (current_user.get_role() == roles[2]) {
 		
-	}
-	else if (current_user.get_role() == roles[3]) {
-
 	}
 }

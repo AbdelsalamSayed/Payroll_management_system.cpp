@@ -21,7 +21,7 @@ public:
 	employee& get_emp(int index);
 	company(string _company_name, string _company_domaine);
 	int comp_emp_num();
-	void add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary);
+	void add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary,string _comp_name);
 	int get_emp_count();
 	int search_emp_ID(int id);
 	int search_emp_email(string email);

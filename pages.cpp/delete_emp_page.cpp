@@ -3,7 +3,7 @@
 void delete_emp_page(string company_name, employee& current_user) {
 	company& comp = sys.get_company_by_id(sys.get_company_id(company_name));
 	position = 0;
-	main_ui("Setting", 3);
+	main_ui("Setting", 3,roles[0]);
 	move(5, centerS(((string)"Delete employee from " + company_name + " company")));
 	cout << "Delete employee from " + company_name + " company";
 	move(7, centerS(((string)"Enter employee ID to delete")));

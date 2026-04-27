@@ -6,21 +6,21 @@
 class employee {
 	inline static int last_emp_id = 1000;
 	int employee_id;
-	string employee_name, employee_email, employee_password, employee_role, employee_num;
+	string employee_name, employee_email, employee_password, employee_role, employee_num,comp_name;
 	float employee_leave, employee_attendance, employee_borrowing, employee_bouns, employee_overtime,
 		taxes,employee_late, employee_absence, employee_deduction;
 	double employee_salary;
 	bool statu_in,locked;
 public:
 
-	employee(string emp_name, string emp_email, string emp_pass, double emp_salary);
+	employee(string emp_name, string emp_email, string emp_pass, double emp_salary,string _comp_name);
 	string get_name();
 	string get_email();
 	string get_pass();
 	string get_role();
 	int get_id();
 	string get_num();
-
+	string get_comp_name();
 	float get_taxes();
 	void set_taxes(float _taxes);
 

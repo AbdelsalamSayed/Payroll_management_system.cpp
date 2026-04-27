@@ -1,4 +1,20 @@
-﻿  password_page.cpp
+﻿  Head.cpp
+  add_emp_page.cpp
+  admins.cpp
+  delete_emp_page.cpp
+D:\Payroll_sim\Payroll_sim\pages.cpp\delete_emp_page.cpp(31,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Payroll_sim\Payroll_sim\pages.cpp\delete_emp_page.cpp(53,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  edit_company_ui.cpp
+D:\Payroll_sim\Payroll_sim\pages.cpp\edit_company_ui.cpp(113,33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Payroll_sim\Payroll_sim\pages.cpp\edit_company_ui.cpp(115,77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Payroll_sim\Payroll_sim\pages.cpp\edit_company_ui.cpp(145,65): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+D:\Payroll_sim\Payroll_sim\pages.cpp\edit_company_ui.cpp(148,38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  login_page.cpp
+  password_page.cpp
+  setting_ui.cpp
+  system_admin.cpp
+  system_admin_addcompany_ui.cpp
+  system_admin_home_ui.cpp
   program.cpp
   Generating Code...
   Payroll_sim.vcxproj -> D:\Payroll_sim\x64\Debug\Payroll_sim.exe
