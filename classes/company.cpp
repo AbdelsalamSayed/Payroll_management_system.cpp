@@ -30,6 +30,9 @@ int company::comp_emp_num() {
 }
 
 void company::add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary,string _comp_name) {
+	transform(emp_name.begin(), emp_name.end(), emp_name.begin(), ::toupper);
+	transform(emp_email.begin(), emp_email.end(), emp_email.begin(), ::tolower);
+	transform(_comp_name.begin(), _comp_name.end(), _comp_name.begin(), ::toupper);
 	employee new_emp = employee(emp_name, emp_email, emp_pass, emp_salary, _comp_name);
 	employeeslist.push_back(new_emp);
 }

@@ -49,7 +49,7 @@ void passpage_ui(string email) {
 void pass_page(string email) {
 	passpage_ui(email);
 	string input, functions="start";
-	
+	try_count = 10;
 	do {
 		position = 1;
 		if (functions == "esc") { loginpage(); }
@@ -105,7 +105,7 @@ void pass_page(string email) {
 		if (functions == "enter") {
 			functions = "start";
 			employee& current_user = sys.get_employee_by_email(email);
-			if (current_user.get_pass() != input && try_num > 0 && try_count > 0 && !input.empty()) {
+			if (current_user.get_pass() != input && 5 >= try_count && try_count > 0 && !input.empty()) {
 				try_count--;
 				bcolor(main_back_color);
 				move(18, 1);
@@ -116,10 +116,21 @@ void pass_page(string email) {
 				cout << error;
 				fcolor(main_font_color);
 			}
+			else if (current_user.get_pass() != input && try_count > 5 && !input.empty()) {
+				try_count--;
+				bcolor(main_back_color);
+				move(18, 1);
+				clearL(Width - 2);
+				string error = "Incorrect password ";
+				red(font);
+				move(18, centerS(error));
+				cout << error;
+				fcolor(main_font_color);
+			}
 			else if (current_user.get_pass() != input && try_count == 0) {
 				
 				try_count = try_num;
-				if (current_user.get_role() != roles[0]) {
+				if (current_user.get_role() != roles[0]||current_user.get_role() != roles[1]) {
 					current_user.set_locked(true);
 				}
 				loginpage_ui();
@@ -136,6 +147,7 @@ void pass_page(string email) {
 				move(19, centerS(error1));
 				cout << error1;
 				fcolor(main_font_color);
+				Sleep(2000);
 				loginpage();
 			}
 			else if (current_user.get_pass() == input && current_user.get_email() == email) {

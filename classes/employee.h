@@ -4,7 +4,7 @@
 #include "../Main_H.h"
 
 class employee {
-	inline static int last_emp_id = 1000;
+	inline static int last_emp_id = 100;
 	int employee_id;
 	string employee_name, employee_email, employee_password, employee_role, employee_num,comp_name;
 	float employee_leave, employee_attendance, employee_borrowing, employee_bouns, employee_overtime,

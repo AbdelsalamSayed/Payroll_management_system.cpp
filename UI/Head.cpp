@@ -112,7 +112,6 @@ void footer(string role,int button_num) {
 			cout << home;
 			bcolor(main_back_color);
 			fcolor(main_font_color);
-			
 			move(Bhight - 3, centerLN(18, 29, edit));
 			cout << edit;
 			move(Bhight - 3, centerLN(33, 45, setting));

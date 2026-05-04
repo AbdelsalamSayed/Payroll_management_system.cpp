@@ -22,7 +22,8 @@ void delete_emp_page(string company_name, employee& current_user) {
 		move(10, 9);
 		fcolor(main_font_color);
 		id_write(28, emp_id, functions);
-		if (functions == "esc") { edit_com_page(current_user); }
+		if (functions == "esc" && current_user.get_role() == roles[0]) { edit_com_page(current_user); }
+		else if (functions == "esc" && current_user.get_role() == roles[1]) { Admin_edit_com_page(current_user); }
 		if (functions == "enter") {
 			move(13, 1);
 			string spaces = string(45, ' ');
@@ -48,26 +49,38 @@ void delete_emp_page(string company_name, employee& current_user) {
 				fcolor(main_font_color);
 				cout << "Yes";
 				bcolor(main_back_color);
-				buttons(functions = "super_admin");
-				if (functions == "enter") {
-					sys.get_company_by_id(sys.get_company_id(company_name)).delete_emp(emp_id);
-					string error = "Employee deleted successfully";
-					move(24, 2);
-					bcolor(main_back_color);
-					string s = string(43, ' ');
-					cout << s;
-					move(24, centerS(error));
-					green(font);
-					cout << error;
-					bcolor(main_boxback_color);
-					fcolor(main_font_color);
-					Sleep(2000);
-					edit_com_page(current_user);
+				do {
+					buttons(functions = "super_admin");
+					if (functions == "enter") {
+						sys.get_company_by_id(sys.get_company_id(company_name)).delete_emp(emp_id);
+						string error = "Employee deleted successfully";
+						move(24, 2);
+						bcolor(main_back_color);
+						string s = string(43, ' ');
+						cout << s;
+						move(24, centerS(error));
+						green(font);
+						cout << error;
+						bcolor(main_boxback_color);
+						fcolor(main_font_color);
+						Sleep(2000);
+						if (current_user.get_role() == roles[0]) {
+							edit_com_page(current_user);
+						}
+						else if (current_user.get_role() == roles[1]) {
+							Admin_edit_com_page(current_user);
+						}
 
-				}
-				else {
-					edit_com_page(current_user);
-				}
+					}
+					if (functions == "esc"){
+						if (current_user.get_role() == roles[0]) {
+							edit_com_page(current_user);
+						}
+						else if (current_user.get_role() == roles[1]) {
+							Admin_edit_com_page(current_user);
+						}
+					}
+				} while (true);
 			}else {
 				
 				string error = "Employee ID not found.";

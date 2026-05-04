@@ -326,3 +326,122 @@ void edit_com_page(employee& current_user) {
 		}
 	}while (true);
 }
+void Admin_edit_com_page(employee& current_user) {
+
+	string found;
+	main_ui("Edit Company", 2, roles[1]);
+	string functions, Cname = current_user.get_comp_name();
+	string space = string(28, ' ');
+	double Cid = 0;
+	int position = 0;
+	company& current_comp = sys.get_company_by_id(sys.get_company_id(current_user.get_comp_name()));
+	do {
+		if (functions == "esc") { admins_page(current_user); }
+		if (position == 0 || ((functions == "up" || functions == "tab") && (position == 2 || position == 4))) {
+
+			bcolor(main_back_color);
+			green(font);
+
+
+			domain = "Company domain ---> " + current_comp.get_company_domain();
+			move(7, centerS(domain));
+			cout << domain;
+			move(5, centerS((Cname + " Company")));
+			cout << Cname + " Company";
+
+			move(22, centerS(((string)"Total Employees: " + to_string(current_comp.comp_emp_num()) + " Employee(s)")));
+			cout << "Total Employees: " << current_comp.comp_emp_num() << " Employee(s)";
+			move(9, 8);
+			hoverd_button;
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(10, centerLN(9, 39, ((string)"Edit Employee")));
+			cout << "Edit Employee";
+			non_hoverd_button;
+			move(13, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(14, centerLN(9, 39, ((string)"Add employee")));
+			cout << "Add employee";
+			non_hoverd_button;
+			move(17, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(18, centerLN(9, 39, ((string)"Delete employee")));
+			cout << "Delete employee";
+			non_hoverd_button;
+			position = 1;
+			functions = "super_admin";
+
+		}
+		buttons(functions = "super_admin");
+		if (((functions == "down" || functions == "tab") && position == 1) || ((functions == "up" || functions == "tab") && position == 3)) {
+			move(9, 8);
+			non_hoverd_button;
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(10, centerLN(9, 39, ((string)"Edit Employee")));
+			cout << "Edit Employee";
+			hoverd_button;
+			move(13, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(14, centerLN(9, 39, ((string)"Add employee")));
+			cout << "Add employee";
+			non_hoverd_button;
+			move(17, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(18, centerLN(9, 39, ((string)"Delete employee")));
+			cout << "Delete employee";
+			non_hoverd_button;
+			if (position == 1) {
+				position = 2;
+			}
+			else {
+				position = 4;
+			}
+			functions = "super_admin";
+		}
+		else if (((functions == "down" || functions == "tab") && position == 2) || (functions == "down" && position == 4)) {
+			move(9, 8);
+			non_hoverd_button;
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(10, centerLN(9, 39, ((string)"Edit Employee")));
+			cout << "Edit Employee";
+			non_hoverd_button;
+			move(13, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(14, centerLN(9, 39, ((string)"Add employee")));
+			cout << "Add employee";
+			hoverd_button;
+			move(17, 8);
+			Dframe(1, 30);
+			fcolor(hoverd_font_color);
+			move(18, centerLN(9, 39, ((string)"Delete employee")));
+			cout << "Delete employee";
+			non_hoverd_button;
+			position = 3;
+			functions = "super_admin";
+		}
+
+		if (functions == "enter" && position == 1) {
+			main_ui("Edit Company", 3, roles[0]);
+			
+
+		}
+		else if (functions == "enter" && (position == 2 || position == 4)) {
+			add_emp_page(Cname, current_user);
+
+
+		}
+		else if (functions == "enter" && position == 3) {
+			delete_emp_page(Cname, current_user);
+
+
+		}
+	} while (true);
+
+}

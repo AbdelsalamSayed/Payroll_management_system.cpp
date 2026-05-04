@@ -37,9 +37,9 @@ inline char single6 = (char)217; // ┘
 
 
 using namespace std;
-inline const int try_num = 5;
+inline const int try_num = 10;
 inline int try_count = try_num;
-inline const string roles[4] = {"system_admin","comp_admins","staff"};
+inline const string roles[4] = {"system_admin","comp_admin","staff"};
 
 constexpr int Width = 45;
 constexpr int Hhight = 1;
@@ -236,10 +236,10 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		cout << double5 << W1<< double7 << W2 ;
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_button_color);
-		cout << double7<< W3 << double7;
+		cout << double7<< W3 << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		cout << W4 << double6;
+		
 
 	}
 	else if (num == 4) {
@@ -341,7 +341,7 @@ inline void f3frame(int h, int w1, int w2, int w3, int num) {
 		cout << double8 << W2 << double8;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		cout << W3 << double8 << double10;
+		cout << W3 << double10;
 		for (int i = 0;i < h;i++) {
 			moveD(1);
 			moveL(w1 + w2 + w3 + 5);
@@ -370,10 +370,9 @@ inline void f3frame(int h, int w1, int w2, int w3, int num) {
 		cout << double9 << W1<<double8 << W2 ;
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_button_color);
-		cout << double8<< W3 << double8;
+		cout << double8<< W3 << double10;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		cout << double10;
 		for (int i = 0;i < h;i++) {
 			moveD(1);
 			moveL(w1 + w2 + w3 + 5);
@@ -383,17 +382,15 @@ inline void f3frame(int h, int w1, int w2, int w3, int num) {
 			cout << double4<< s3 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
-			cout << double4;
 		}
 		moveD(1);
 		moveL(w1 + w2 + w3 + 5);
 		cout << double5 << W1<< double7 << W2 ;
 		fcolor(hoverd_border_color);
 		bcolor(hoverd_button_color);
-		cout << double7<< W3 << double7;
+		cout << double7<< W3 << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		cout << double6;
 
 	}
 	else if (num == 4) {

@@ -8,7 +8,7 @@ employee::employee(string emp_name, string emp_email, string emp_pass, double em
 	employee_email = emp_email;
 	employee_password = emp_pass;
 	employee_id = last_emp_id;
-	employee_role = "Staff";
+	employee_role = roles[2];
 	employee_leave = 0.0;
 	employee_attendance = 0.0;
 	employee_borrowing = 0.0;

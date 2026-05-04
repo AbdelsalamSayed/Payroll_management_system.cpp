@@ -194,7 +194,7 @@ void add_comp_page(employee& current_user) {
 		}
 		if (functions == "esc") { system_admin_pages(current_user); }
 		if (comp_name.empty()) { functions = "start"; continue; }
-		transform(comp_name.begin(), comp_name.end(), comp_name.begin(), toupper);
+		transform(comp_name.begin(), comp_name.end(), comp_name.begin(), tolower);
 		if (sys.get_company_id(comp_name) == -1) {
 
 			if (comp_name.length() >= 4 && all_of(comp_name.begin(), comp_name.end(), isalnum) && !isdigit(comp_name[0])) {
