@@ -96,5 +96,6 @@
   <ItemGroup>
     <Text Include="zdata.txt" />
     <Text Include="ztoken.txt" />
+    <Text Include="zreport.txt" />
   </ItemGroup>
 </Project>

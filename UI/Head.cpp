@@ -158,7 +158,7 @@ void buttons(string& functions) {
 
 			char input = _getch();
 			if (input == 13) { functions = "enter"; position = 1; } //Enter
-			else if (input == 27) { functions = "esc"; }
+			else if (input == 27) { functions = "esc"; break; }//ESC
 			else if (input == 9) { functions = "tab"; break; }//tap
 			else if (input == -32) {
 				input = _getch();
@@ -175,6 +175,7 @@ void buttons(string& functions) {
 			char input = _getch();
 			if (input == 13) { functions = "enter";break; } //Enter
 			else if (input == 27) { functions = "esc";break; }
+			else if (input == 16) { functions = "ctrl+p"; break; }//Ctrl+P
 			else if (input == 9) { functions = "tab"; break; }//tap
 			else if (input == -32) {
 				input = _getch();

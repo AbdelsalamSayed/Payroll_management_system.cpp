@@ -10,23 +10,65 @@ void admins_page(employee& current_user) {
 	company& current_comp = sys.get_company_by_id(sys.get_company_id(comp_name));
 	string space = string(Width, double2);
 	fcolor(main_bordr_color);
-	move(14, 0);
+	move(11, 0);
 	cout << double9 << space << double10;
-	move(18, 0);
+	move(15, 0);
+	cout << double9 << space << double10;
+	move(19, 0);
+	cout << double9 << space << double10;
+	move(23, 0);
 	cout << double9 << space << double10;
 	fcolor(main_font_color);
 	string total_employees = "Total Employees   --->  " + to_string(current_comp.get_emp_count());
-	string total_salary = "Total Salaries    --->  " + to_string(current_comp.get_total_salary());
-	move(16, 2);
+	string total_salary = "Total Gross Salaries    --->  " + to_string(current_comp.get_total_salary());
+	string total_net_salary = "Total Net Salaries    --->  " + to_string(current_comp.get_total_net_salary());
+	move(13, 2);
 	cout << total_employees;
-	move(20, 2);
+	move(17, 2);
 	cout << total_salary;
-	draw_logo(5);
+	move(21, 2);
+	cout << total_net_salary;
+	move(24, centerS(((string)"press ctrl+p to export company data")));
+	fcolor(main_bordr_color);
+	cout << "press ctrl+p to export company data";
+	fcolor(main_font_color);
+	draw_logo(4);
 	do {
 		buttons(functions = "main");
 		if (functions == "esc") {
 			logout_msg();
 			admins_page(current_user);
+		}
+		else if (functions == "ctrl+p") {
+			string space = string(40, ' ');
+			move(24,3);
+			reset;
+			cout << space;
+			moveL(40);
+			for (int i = 0;i < 3;i++) {
+				blink;
+				green(back);
+				string space = string(5, ' ');
+				cout << space;
+				Sleep(800);
+				cout << space;
+				Sleep(200);
+			}
+			Sleep(1500);
+			string space1 = string(10, ' ');
+			cout << space1;
+			Sleep(600);
+			move(24, 3);
+			bcolor(main_back_color);
+			cout << space;
+			green(font);
+			nonblink;
+			move(25,centerS(((string)"Company Data Exported Successfully!")));
+			cout << "Company Data Exported Successfully!";
+			export_report(current_user);
+			Sleep(2000);
+			admins_page(current_user);
+
 		}
 		else if ((functions=="right"|| functions == "tab" ) && position==1) {
 			footer(roles[1],2);

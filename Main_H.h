@@ -115,6 +115,7 @@ constexpr int Bfont = 9;
 #define bold cout<<"\033[1m"
 #define italic cout<<"\033[3m"
 #define blink cout<<"\033[6m"
+#define nonblink cout<<"\033[25m"
 
 
 //====================FRAME====================

@@ -1,14 +1,19 @@
 #pragma once
 #include "../Main_H.h"
 
-class employee {
+class user {
+protected:
+	string name;
+	string email;
+	string password;
+	string role;
+	string num;
+
+};
+
+class employee : private user {
 private:
 	int employee_id;
-	string employee_name;
-	string employee_email;
-	string employee_password;
-	string employee_role;
-	string employee_num;
 	string comp_name;
 
 	float hours;

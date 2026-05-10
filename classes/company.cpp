@@ -43,6 +43,13 @@ int company::get_emp_count() const { return (int)employeeslist.size(); }
 int company::get_total_salary() const {
 	int total_salary = 0;
 	for (const auto& emp : employeeslist) {
+		total_salary += emp.get_salary();
+	}
+	return total_salary;
+}
+int company::get_total_net_salary() const {
+	int total_salary = 0;
+	for (const auto& emp : employeeslist) {
 		total_salary += emp.get_net_salary();
 	}
 	return total_salary;

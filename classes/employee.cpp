@@ -6,16 +6,16 @@
 employee::employee(const string& emp_name, const string& emp_email, const string& emp_pass, double emp_salary, const string& _comp_name) {
 
 	comp_name = _comp_name;
-	employee_name = emp_name;
-	employee_email = emp_email;
-	employee_password = emp_pass;
+	name = emp_name;
+	email = emp_email;
+	password = emp_pass;
 	if (sys.get_company_by_id(sys.get_company_id(comp_name)).get_emp_count() > 0) {
 		employee_id = 100 + sys.get_company_by_id(sys.get_company_id(comp_name)).get_emp_count()+1;
 	}else {
 		employee_id = 101;
 	}
 	hours = 8;
-	employee_role = roles[2];
+	role = roles[2];
 	employee_leave = 0.0;
 	employee_attendance = 0.0;
 	employee_borrowing = 0.0;
@@ -31,12 +31,12 @@ employee::employee(const string& emp_name, const string& emp_email, const string
 	employee_net_salary = emp_salary;
 }
 string employee::get_comp_name() const { return comp_name; }
-string employee::get_name() const { return employee_name; }
-string employee::get_email() const { return employee_email; }
-string employee::get_pass() const { return employee_password; }
-string employee::get_role() const { return employee_role; }
+string employee::get_name() const { return name; }
+string employee::get_email() const { return email; }
+string employee::get_pass() const { return password; }
+string employee::get_role() const { return role; }
 int employee::get_id() const { return employee_id; }
-string employee::get_num() const { return employee_num; }
+string employee::get_num() const { return num; }
 
 float employee::get_taxes() const { return employee_salary*0.01; }
 void employee::set_taxes(float _taxes) { taxes = _taxes; }
@@ -47,10 +47,10 @@ void employee::set_statu(bool statu) { statu_in = statu; }
 bool employee::get_locked() const { return locked; }
 void employee::set_locked(bool _locked) { locked = _locked; }
 
-void employee::set_name(const string& new_name) { employee_name = new_name; }
-void employee::set_pass(const string& new_pass) { employee_password = new_pass; }
-void employee::set_role(const string& new_role) { employee_role = new_role; }
-void employee::set_num(const string& new_num) { employee_num = new_num; }
+void employee::set_name(const string& new_name) { this->name = new_name; }
+void employee::set_pass(const string& new_pass) { this->password = new_pass; }
+void employee::set_role(const string& new_role) { this->role = new_role; }
+void employee::set_num(const string& new_num) { this->num = new_num; }
 
 float employee::get_leavenum() const { return employee_leave; }
 float employee::get_attendance() const { return employee_attendance; }
@@ -76,11 +76,11 @@ void employee::set_deduction(double new_deduction) { employee_deduction += new_d
 void employee::set_late(float new_late) { employee_late = new_late; }
 void employee::set_comp_name(const string& new_comp_name) { 
 	comp_name = new_comp_name;
-	stringstream ss(employee_name);
+	stringstream ss(name);
 	string first_name;
 	ss >> first_name;
 	transform(first_name.begin(), first_name.end(), first_name.begin(), tolower);
-	employee_email = first_name + to_string(employee_id-100) + sys.get_company_by_id(sys.get_company_id(comp_name)).get_company_domain();
+	email = first_name + to_string(employee_id-100) + sys.get_company_by_id(sys.get_company_id(comp_name)).get_company_domain();
 }
 void employee::check_in(long long time) { time_in = time; }
 long long employee::check_out(){

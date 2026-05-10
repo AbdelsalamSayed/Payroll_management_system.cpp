@@ -270,3 +270,58 @@ void get_data() {
 	}
 }
 
+
+void export_report(employee& current_user) {
+	ofstream file("zreport.txt", ios::out);
+	if (file.is_open()) {
+		if (current_user.get_role() == roles[2]) {
+			string space = string(50, '=');
+			file << "Employee Report" << endl;
+			file << "company: " << current_user.get_comp_name() << endl;
+			file << space << endl;
+			file << current_user.get_name() << " | " << current_user.get_email() << " | " << current_user.get_id() << " | " << current_user.get_num() << " | " << endl;
+			file << space << endl;
+			file << "Company: " << current_user.get_comp_name() << endl;
+			file << "Salary: " << current_user.get_salary() << endl;
+			file << "Attendance: " << current_user.get_attendance() << "  -->  "<< current_user.get_attendance() * ((current_user.get_salary() / 30.0) / 8.0) << endl;
+			file << "Overtime: " << current_user.get_overtime() <<"  -->  "<< current_user.get_overtime()/60.0*( current_user.get_salary()/160.0) << endl;
+			file << "Taxes: " << current_user.get_taxes() << endl;
+			file << "Bounes: " << current_user.get_bouns() << endl;
+			file << "Deduction: " << current_user.get_deduction() << endl;
+			file << "Leave: " << current_user.get_leavenum() << "  -->  " << current_user.get_leavenum() * (current_user.get_salary() / 30.0) << endl;
+			file << "Borrowing: " << current_user.get_borrowing() << endl;
+			file << "Net Salary: " << current_user.get_net_salary() << endl;
+			file << space << endl;
+		}
+		else {
+			string space = string(50, '=');
+			file << "Company Report" << endl;
+			file << "company: " << current_user.get_comp_name() << endl;
+			file << space << endl;
+			for (int i = 0; i < sys.get_company_by_id(sys.get_company_id(current_user.get_comp_name())).comp_emp_num(); i++) {
+				employee& emp = sys.get_company_by_id(sys.get_company_id(current_user.get_comp_name())).get_emp(i);
+				file << emp.get_name() << " | " << emp.get_email() << " | " << emp.get_id() << " | " << emp.get_num() << " | " << emp.get_role() << endl;
+				file << space << endl;
+				file << "Salary: " << emp.get_salary() << endl;
+				file << "Attendance: " << emp.get_attendance() << "  -->  " << emp.get_attendance() * ((emp.get_salary() / 30) / 8) << endl;
+				file << "Overtime: " << emp.get_overtime() <<"  -->  "<< emp.get_overtime()/60.0*( emp.get_salary() / 160.0)<< endl;
+				file << "Taxes: " << emp.get_taxes() << endl;
+				file << "Bounes: " << emp.get_bouns() << endl;
+				file << "Deduction: " << emp.get_deduction() << endl;
+				file << "Leave: " << emp.get_leavenum() << "  -->  " << emp.get_leavenum() * (emp.get_salary() / 30.0) << endl;
+				file << "Borrowing: " << emp.get_borrowing() << endl;
+				file << "Net Salary: " << emp.get_net_salary() << endl;
+				file << space << endl;
+			}
+			company& current_comp = sys.get_company_by_id(sys.get_company_id(current_user.get_comp_name()));
+			file<< "Total Company Gross Salaries    --->  " << current_comp.get_total_salary() << endl;
+			file<< "Total Company Net Salaries    --->  " << current_comp.get_total_net_salary() << endl;
+
+		}
+	}
+	else {
+		cerr << "Unable to open report file for writing." << endl;
+	}
+
+}
+

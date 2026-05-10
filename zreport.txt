@@ -1,0 +1,41 @@
+Company Report
+company: ECU
+==================================================
+ABDO | 123 | 101 | 1147745471 | comp_admin
+==================================================
+Salary: 5000
+Attendance: 240  -->  5000
+Overtime: 0  -->  0
+Taxes: 50
+Bounes: 0
+Deduction: 0
+Leave: 0  -->  0
+Borrowing: 0
+Net Salary: 4950
+==================================================
+MEDO | 11 | 102 |  | staff
+==================================================
+Salary: 20000
+Attendance: 14.4311  -->  1202.59
+Overtime: 120  -->  250
+Taxes: 200
+Bounes: 200
+Deduction: 100
+Leave: 8  -->  5333.33
+Borrowing: 500
+Net Salary: -4480.74
+==================================================
+ABDO | abdo3@ecu.com | 103 |  | staff
+==================================================
+Salary: 15000
+Attendance: 0  -->  0
+Overtime: 0  -->  0
+Taxes: 150
+Bounes: 0
+Deduction: 0
+Leave: 0  -->  0
+Borrowing: 0
+Net Salary: -150
+==================================================
+Total Company Gross Salaries    --->  40000
+Total Company Net Salaries    --->  319

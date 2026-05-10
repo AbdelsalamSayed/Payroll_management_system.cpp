@@ -237,8 +237,42 @@ void staff_page(employee& current_user) {
 		cout << " Your Borrowing    | " << current_user.get_borrowing();
 		move(20, 1);
 		cout << " Your Net Salary   | " << current_user.get_net_salary();
+		move(22, centerS(((string)"press ctrl+P to export salary information")));
+		fcolor(main_bordr_color);
+		cout << "press ctrl+P to export salary information";
+		fcolor(main_font_color);
 		do {
 			buttons(functions = "main");
+			if (functions == "ctrl+p") {
+				string space = string(40, ' ');
+				move(24, 3);
+				reset;
+				cout << space;
+				moveL(40);
+				for (int i = 0;i < 3;i++) {
+					blink;
+					green(back);
+					string space = string(5, ' ');
+					cout << space;
+					Sleep(800);
+					cout << space;
+					Sleep(200);
+				}
+				Sleep(1500);
+				string space1 = string(10, ' ');
+				cout << space1;
+				Sleep(600);
+				move(24, 3);
+				bcolor(main_back_color);
+				cout << space;
+				green(font);
+				nonblink;
+				move(25, centerS(((string)"Salary information exported successfully")));
+				cout << "Salary information exported successfully";
+				export_report(current_user);
+				Sleep(2000);
+				staff_page(current_user);
+			}
 		} while (functions != "esc");
 		staff_page(current_user);
 	}

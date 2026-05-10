@@ -26,6 +26,7 @@ public:
 	int search_emp_ID(int id) const;
 	int search_emp_email(const string& email) const;
 	int get_total_salary() const;
+	int get_total_net_salary() const;
 
 	// Setters
 	void set_company_name(const string& name);
