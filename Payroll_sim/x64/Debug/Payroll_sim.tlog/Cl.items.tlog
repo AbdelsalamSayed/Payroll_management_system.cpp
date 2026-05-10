@@ -1,0 +1,16 @@
+D:\Dev\Projects\Payroll_sim\Payroll_sim\classes\Appsystem.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\Appsystem.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\classes\company.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\company.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\classes\employee.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\employee.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\add_emp_page.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\add_emp_page.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\admins.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\admins.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\delete_emp_page.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\delete_emp_page.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\edit_company_ui.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\edit_company_ui.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\login_page.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\login_page.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\password_page.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\password_page.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\setting_ui.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\setting_ui.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\system_admin_addcompany_ui.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\system_admin_addcompany_ui.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\system_admin_home_ui.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\system_admin_home_ui.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\security\search_user.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\search_user.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\pages.cpp\system_admin.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\system_admin.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\UI\Head.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\Head.obj
+D:\Dev\Projects\Payroll_sim\Payroll_sim\program.cpp;D:\Dev\Projects\Payroll_sim\Payroll_sim\Payroll_sim\x64\Debug\program.obj

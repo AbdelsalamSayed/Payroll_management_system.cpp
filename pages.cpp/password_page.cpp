@@ -52,7 +52,7 @@ void pass_page(string email) {
 	try_count = 10;
 	do {
 		position = 1;
-		if (functions == "esc") { loginpage(); }
+		if (functions == "esc") { clear_token(); loginpage();  }
 		if (functions == "start") {
 			input = "";
 			bcolor(main_boxback_color);
@@ -105,7 +105,7 @@ void pass_page(string email) {
 		if (functions == "enter") {
 			functions = "start";
 			employee& current_user = sys.get_employee_by_email(email);
-			if (current_user.get_pass() != input && 5 >= try_count && try_count > 0 && !input.empty()) {
+			if (current_user.get_pass() != input && 5 >= try_count && try_count > 1 && !input.empty()) {
 				try_count--;
 				bcolor(main_back_color);
 				move(18, 1);
@@ -127,7 +127,7 @@ void pass_page(string email) {
 				cout << error;
 				fcolor(main_font_color);
 			}
-			else if (current_user.get_pass() != input && try_count == 0) {
+			else if (current_user.get_pass() != input && try_count == 1) {
 				
 				try_count = try_num;
 				if (current_user.get_role() != roles[0]||current_user.get_role() != roles[1]) {
@@ -148,6 +148,7 @@ void pass_page(string email) {
 				cout << error1;
 				fcolor(main_font_color);
 				Sleep(2000);
+				clear_token();
 				loginpage();
 			}
 			else if (current_user.get_pass() == input && current_user.get_email() == email) {
@@ -156,6 +157,7 @@ void pass_page(string email) {
 		}
 	} while (true);
 	employee& current_user = sys.get_employee_by_email(email);
+	save_token(current_user);
 	if (current_user.get_role() == roles[0]) {
 		system_admin_pages(current_user);
 	}
@@ -163,6 +165,6 @@ void pass_page(string email) {
 		admins_page(current_user);
 	}
 	else if (current_user.get_role() == roles[2]) {
-		
+		staff_page(current_user);
 	}
 }

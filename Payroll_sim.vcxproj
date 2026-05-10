@@ -133,7 +133,6 @@
     <ClInclude Include="classes\employee.h" />
     <ClInclude Include="pages.H\login_page.h" />
     <ClInclude Include="pages.H\password_page.h" />
-    <ClInclude Include="security\search_user.h" />
     <ClInclude Include="pages.H\system_admin.h" />
     <ClInclude Include="UI\Head.h" />
     <ClInclude Include="program.h" />
@@ -149,12 +148,16 @@
     <ClCompile Include="pages.cpp\login_page.cpp" />
     <ClCompile Include="pages.cpp\password_page.cpp" />
     <ClCompile Include="pages.cpp\setting_ui.cpp" />
+    <ClCompile Include="pages.cpp\staff_page.cpp" />
     <ClCompile Include="pages.cpp\system_admin_addcompany_ui.cpp" />
     <ClCompile Include="pages.cpp\system_admin_home_ui.cpp" />
-    <ClCompile Include="security\search_user.cpp" />
     <ClCompile Include="pages.cpp\system_admin.cpp" />
     <ClCompile Include="UI\Head.cpp" />
     <ClCompile Include="program.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="zdata.txt" />
+    <Text Include="ztoken.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

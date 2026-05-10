@@ -7,6 +7,8 @@
 #include <vector>
 #include <algorithm>
 #include <Windows.h>
+#include <fstream>
+using namespace std;
 
 
 inline char double1 = (char)201; // ╔
@@ -36,7 +38,7 @@ inline char single5 = (char)192; // └
 inline char single6 = (char)217; // ┘ 
 
 
-using namespace std;
+
 inline const int try_num = 10;
 inline int try_count = try_num;
 inline const string roles[4] = {"system_admin","comp_admin","staff"};
@@ -226,6 +228,8 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 			cout << double4 << s1 << double4 << s2 ;
 			fcolor(hoverd_border_color);
 			bcolor(hoverd_button_color);
+
+
 			cout << double4<< s3 << double4;
 			bcolor(main_back_color);
 			fcolor(main_bordr_color);
@@ -239,7 +243,7 @@ inline void f3frame(int h, int w1, int w2, int w3,int w4, int num) {
 		cout << double7<< W3 << double6;
 		bcolor(main_back_color);
 		fcolor(main_bordr_color);
-		
+		cout << W4 << double6;
 
 	}
 	else if (num == 4) {
@@ -503,3 +507,6 @@ inline void draw_logo(int x) {
 	cout << e;
 	reset;
 }
+
+
+

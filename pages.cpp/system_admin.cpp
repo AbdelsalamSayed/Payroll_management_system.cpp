@@ -6,81 +6,11 @@ void system_admin_pages(employee& current_user) {
 	string functions = "start";
 	do {
 		hideC;
-		buttons(functions = "super_admin");
+		buttons(functions = "main");
 		if (functions == "esc") {
+			logout_msg();
 			position = 1;
-			move(11, centerN(21));
-			white(back);
-			red(font);
-			Dframe(8, 21);
-			string error = "Do you want to Logout";
-			move(13,centerLN(13, 33, error));
-			black(font);
-			cout << "\a" << error;
-			move(16, centerN(5));
-			moveR(6);
-			Dframe(1, 5);
-			move(17, centerN(5));
-			moveR(8);
-			cout << "No";
-			move(16, centerN(5));
-			moveL(6);
-			red(back);
-			Dframe(1, 5);
-			move(17, centerN(5));
-			moveL(4);
-			cout << "Yes";
-			white(back);
-			do {
-				buttons(functions = "super_admin");
-				if ((functions == "right" || functions == "tab") && position == 1) {
-					white(back);
-					move(16, centerN(5));
-					moveL(6);
-					Dframe(1, 5);
-					move(17, centerN(5));
-					moveL(4);
-					cout << "Yes";
-					red(back);
-					move(16, centerN(5));
-					moveR(6);
-					Dframe(1, 5);
-					move(17, centerN(5));
-					moveR(8);
-					cout << "No";
-					position = 2;
-					white(back);
-				}
-				if ((functions == "left" || functions == "tab") && position == 2) {
-					white(back);
-					move(16, centerN(5));
-					moveR(6);
-					Dframe(1, 5);
-					move(17, centerN(5));
-					moveR(8);
-					cout << "No";
-					move(16, centerN(5));
-					moveL(6);
-					red(back);
-					Dframe(1, 5);
-					move(17, centerN(5));
-					moveL(4);
-					cout << "Yes";
-					position = 1;
-					white(back);
-				}
-				if (functions == "enter" && position == 1) {
-					loginpage_ui();
-					loginpage();
-				}
-				if (functions == "enter" && position == 2) {
-					position = 1;
-					system_admin_pages(current_user);
-				}
-			} while (true);
-			
-			
-
+			system_admin_pages(current_user);
 		}
 		else if (functions != "enter") {
 			if (position == 1)
@@ -144,7 +74,7 @@ void system_admin_pages(employee& current_user) {
 		}
 		else {
 			if (position == 1) {
-				system_admin_home_ui();
+				system_admin_pages(current_user);
 				break;
 			}
 			else if (position == 2 || position == 6) {
@@ -158,7 +88,8 @@ void system_admin_pages(employee& current_user) {
 
 			}
 			else if (position == 4) {
-				super_setting_page(current_user);
+				super_setting_ui(current_user);
+				
 				break;
 
 			}
@@ -197,7 +128,7 @@ void add_comp_page(employee& current_user) {
 		transform(comp_name.begin(), comp_name.end(), comp_name.begin(), tolower);
 		if (sys.get_company_id(comp_name) == -1) {
 
-			if (comp_name.length() >= 4 && all_of(comp_name.begin(), comp_name.end(), isalnum) && !isdigit(comp_name[0])) {
+			if (comp_name.length() >= 4 && all_of(comp_name.begin(), comp_name.end(), [](char c) {return isalnum(c) || c == '_';}) && !isdigit(comp_name[0])) {
 				
 				if (x==0) {
 					comp_domain = "@" + comp_name + ".com";
@@ -223,7 +154,7 @@ void add_comp_page(employee& current_user) {
 					x = 1;
 					
 				}
-				buttons(functions = "super_admin");
+				buttons(functions = "main");
 				if ((functions == "tab"||functions == "right") && position == 1) {
 					fcolor(main_font_color);
 					bcolor(main_boxback_color);
@@ -244,7 +175,7 @@ void add_comp_page(employee& current_user) {
 					position = 2;
 					
 				}
-				if ((functions == "tab" || functions == "left") && position == 2) {
+				else if ((functions == "tab" || functions == "left") && position == 2) {
 					hoverd_button;
 					move(22, 3);
 					Dframe(1, 15);
@@ -261,6 +192,7 @@ void add_comp_page(employee& current_user) {
 					
 				}
 				if (functions == "enter" && position == 2) {
+					save_data();
 					system_admin_pages(current_user);
 				}
 				if (functions == "enter" && position == 1) {
@@ -275,6 +207,7 @@ void add_comp_page(employee& current_user) {
 					cout << error;
 					bcolor(main_boxback_color);
 					fcolor(main_font_color);
+					save_data();
 					Sleep(2000);
 					system_admin_pages(current_user);
 				}
@@ -319,7 +252,3 @@ void add_comp_page(employee& current_user) {
 
 }
 
-
-void super_setting_page(employee& current_user) {
-	super_setting_ui(current_user);
-}

@@ -1,7 +1,7 @@
 #include "../pages.H/system_admin.h"
 
 void super_setting_ui(employee& current_user) {
-	main_ui("Setting", 4,roles[0]);
+	system_admin_ui("Setting", 4,roles[0]);
 	string functions;
 	int position = 0;
 	hoverd_button;
@@ -23,7 +23,7 @@ void super_setting_ui(employee& current_user) {
 	position = 1;
 	functions = "";
 	do {
-		buttons(functions = "super_admin");
+		buttons(functions = "main");
 		if (functions == "esc") { system_admin_pages(current_user); }
 		if (((functions == "tab" || functions == "up") && position == 4)) {
 			hoverd_button;
@@ -148,7 +148,7 @@ void super_setting_ui(employee& current_user) {
 			cout << "Yes";
 			white(back);
 			do {
-				buttons(functions = "super_admin");
+				buttons(functions = "main");
 				if ((functions == "right" || functions == "tab") && position == 1) {
 					white(back);
 					move(16, centerN(5));
@@ -187,6 +187,7 @@ void super_setting_ui(employee& current_user) {
 				}
 				if (functions == "enter" && position == 1) {
 					loginpage_ui();
+					clear_token();
 					loginpage();
 				}
 				if (functions == "enter" && position == 2) {
@@ -203,7 +204,12 @@ void super_setting_ui(employee& current_user) {
 
 
 void change_sys_status(employee& current_user) {
-	main_ui("Setting", 4,roles[0]);
+	if (current_user.get_role() == roles[0]) {
+		system_admin_ui("Setting", 4, roles[0]);
+	}
+	else {
+		admin_ui("Setting", 2, roles[1]);
+	}
 	string functions;
 	int position = 0;
 	
@@ -222,8 +228,15 @@ void change_sys_status(employee& current_user) {
 	position = 1;
 	functions = "";
 	do {
-		buttons(functions = "super_admin");
-		if (functions == "esc") { super_setting_ui(current_user); }
+		buttons(functions = "main");
+		if (functions == "esc") { 
+			if (current_user.get_role()==roles[0]) { 
+				super_setting_ui(current_user); 
+			}
+			else {
+				break;
+			}
+		}
 		if (((functions == "tab" || functions == "down") && position == 1)) {
 			non_hoverd_button;
 			move(9, 7);
@@ -257,39 +270,80 @@ void change_sys_status(employee& current_user) {
 			functions = "";
 		}
 		else if (functions == "enter" && position == 1) {
-			sys.set_system_online(true);
-			string error = "System is now active";
-			move(19, 2);
-			bcolor(main_back_color);
-			string s = string(43, ' ');
-			cout << s;
-			move(19, centerS(error));
-			green(font);
-			cout << error;
-			Sleep(2000);
-			loginpage();
+			if (current_user.get_role() == roles[0]) {
+				sys.set_system_online(true);
+				string error = "System is now active";
+				move(19, 2);
+				bcolor(main_back_color);
+				string s = string(43, ' ');
+				cout << s;
+				move(19, centerS(error));
+				green(font);
+				cout << error;
+				save_data();
+				Sleep(2000);
+				clear_token();
+				loginpage();
+			}
+			else {
+				current_user.set_locked(false);
+				string error = "Employee Id is now active";
+				move(19, 2);
+				bcolor(main_back_color);
+				string s = string(43, ' ');
+				cout << s;
+				move(19, centerS(error));
+				green(font);
+				cout << error;
+				save_data();
+				Sleep(2000);
+				break;
+			}
 
 
 		}
 		else if (functions == "enter" && position == 2) {
-			sys.set_system_online(false);
-			string error = "System is now inactive";
-			move(19, 2);
-			bcolor(main_back_color);
-			string s = string(43, ' ');
-			cout << s;
-			move(19, centerS(error));
-			green(font);
-			cout << error;
-			Sleep(2000);
-			loginpage();
+			if (current_user.get_role() == roles[0]) {
+				sys.set_system_online(false);
+				string error = "System is now inactive";
+				move(19, 2);
+				bcolor(main_back_color);
+				string s = string(43, ' ');
+				cout << s;
+				move(19, centerS(error));
+				green(font);
+				cout << error;
+				save_data();
+				Sleep(2000);
+				clear_token();
+				loginpage();
+			}
+			else {
+				current_user.set_locked(true);
+				string error = "Employee Id is now inactive";
+				move(19, 2);
+				bcolor(main_back_color);
+				string s = string(43, ' ');
+				cout << s;
+				move(19, centerS(error));
+				green(font);
+				cout << error;
+				save_data();
+				Sleep(2000);
+				break;
+			}
 		}
 	} while (true);
 }
 
 
 void change_pass_page(employee& current_user) {
-	main_ui("Setting", 4,roles[0]);
+	if (current_user.get_role() == roles[0]) {
+		system_admin_ui("Setting", 4, roles[0]);
+	}
+	else {
+		admin_ui("Setting", 2, roles[1]);
+	}
 	string functions, _pass,new_pass;
 	move(10, 7);
 	fcolor(main_boxborder_color);
@@ -304,12 +358,22 @@ void change_pass_page(employee& current_user) {
 	cout << "Enter new password";
 	move(14, centerLN(8, 39, ((string)"Confirm new password")));
 	cout << "Confirm new password";
-	move(11, 9);
-	bcolor(main_boxback_color);
-	write_frame(28, pass, _pass, functions);
-	move(16, 9);
-	write_frame(28, pass, new_pass, functions);
-	if (functions == "esc") { super_setting_ui(current_user); }
+	do {
+		move(11, 9);
+		bcolor(main_boxback_color);
+		write_frame(28, pass, _pass, functions);
+	} while (functions != "enter" && functions != "esc");
+	if (functions == "esc") {
+		if (current_user.get_role() == roles[0]) { super_setting_ui(current_user); }
+		else {
+			goto end;
+		}
+	}
+	do{
+		move(16, 9);
+		write_frame(28, pass, new_pass, functions);
+	} while (functions != "enter" && functions != "esc");
+	if (functions == "esc") { if (current_user.get_role() == roles[0]) { super_setting_ui(current_user); } else { goto end; } }
 	if (functions == "enter") {
 		if ((_pass.length() >= 8 && any_of(_pass.begin(), _pass.end(), ::isupper) && any_of(_pass.begin(), _pass.end(), ::islower) && any_of(_pass.begin(), _pass.end(), ::isdigit) && any_of(_pass.begin(), _pass.end(), [](char c) { return ispunct(c); })) ) {
 			if (_pass == new_pass) {
@@ -322,10 +386,14 @@ void change_pass_page(employee& current_user) {
 				move(19, centerS(error));
 				green(font);
 				cout << error;
+				save_data();
 				Sleep(2000);
 				current_user.set_pass(_pass);
-				super_setting_ui(current_user);
-			}else {
+				if (current_user.get_role() == roles[0]) {
+					super_setting_ui(current_user);
+				}
+			}
+			else {
 				string error = "Passwords do not match";
 				move(19, 2);
 				bcolor(main_back_color);
@@ -351,6 +419,5 @@ void change_pass_page(employee& current_user) {
 			change_pass_page(current_user);
 		}
 	}
-	
-	
+end:;
 }

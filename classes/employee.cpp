@@ -1,13 +1,20 @@
 #include "employee.h"
+#include "Appsystem.h"
+#include "company.h"
 
-employee::employee(string emp_name, string emp_email, string emp_pass, double emp_salary, string _comp_name) {
-	
+
+employee::employee(const string& emp_name, const string& emp_email, const string& emp_pass, double emp_salary, const string& _comp_name) {
+
 	comp_name = _comp_name;
-	last_emp_id++;
 	employee_name = emp_name;
 	employee_email = emp_email;
 	employee_password = emp_pass;
-	employee_id = last_emp_id;
+	if (sys.get_company_by_id(sys.get_company_id(comp_name)).get_emp_count() > 0) {
+		employee_id = 100 + sys.get_company_by_id(sys.get_company_id(comp_name)).get_emp_count()+1;
+	}else {
+		employee_id = 101;
+	}
+	hours = 8;
 	employee_role = roles[2];
 	employee_leave = 0.0;
 	employee_attendance = 0.0;
@@ -20,44 +27,72 @@ employee::employee(string emp_name, string emp_email, string emp_pass, double em
 	employee_deduction = 0.0;
 	statu_in = false;
 	locked = false;
-	taxes = 0;
+	taxes = (emp_salary*(1/100));
+	employee_net_salary = emp_salary;
 }
-string employee::get_comp_name() { return comp_name; }
-string employee::get_name() { return employee_name; }
-string employee::get_email() { return employee_email; }
-string employee::get_pass() { return employee_password; }
-string employee::get_role() { return employee_role; }
-int employee::get_id() { return employee_id; }
-string employee::get_num() { return employee_num; }
+string employee::get_comp_name() const { return comp_name; }
+string employee::get_name() const { return employee_name; }
+string employee::get_email() const { return employee_email; }
+string employee::get_pass() const { return employee_password; }
+string employee::get_role() const { return employee_role; }
+int employee::get_id() const { return employee_id; }
+string employee::get_num() const { return employee_num; }
 
-float employee::get_taxes() { return taxes; }
+float employee::get_taxes() const { return employee_salary*0.01; }
 void employee::set_taxes(float _taxes) { taxes = _taxes; }
 
-bool employee::get_statu() { return statu_in; }
-void employee::set_statu(const bool& statu) { statu_in = statu; }
+bool employee::get_statu() const { return statu_in; }
+void employee::set_statu(bool statu) { statu_in = statu; }
 
-bool employee::get_locked() { return locked; }
-void employee::set_locked(const bool& _locked) { locked = _locked; }
+bool employee::get_locked() const { return locked; }
+void employee::set_locked(bool _locked) { locked = _locked; }
 
 void employee::set_name(const string& new_name) { employee_name = new_name; }
 void employee::set_pass(const string& new_pass) { employee_password = new_pass; }
 void employee::set_role(const string& new_role) { employee_role = new_role; }
 void employee::set_num(const string& new_num) { employee_num = new_num; }
 
-float employee::get_leavenum() { return employee_leave; }
-float employee::get_attendance() { return employee_attendance; }
-float employee::get_borrowing() { return employee_borrowing; }
-double employee::get_salary() { return employee_salary; }
-float employee::get_bouns() { return employee_bouns; }
-float employee::get_overtime() { return employee_overtime; }
-float employee::get_absence() { return employee_absence; }
-float employee::get_deduction() { return employee_deduction; }
+float employee::get_leavenum() const { return employee_leave; }
+float employee::get_attendance() const { return employee_attendance; }
+double employee::get_borrowing() const { return employee_borrowing; }
+double employee::get_salary() const { return employee_salary; }
+double employee::get_bouns() const { return employee_bouns; }
+double employee::get_overtime() const { return  employee_overtime; }
+float employee::get_absence() const { return employee_absence; }
+double employee::get_deduction() const { return employee_deduction; }
+double employee::get_net_salary() const {
+	return employee_attendance*(employee_salary / 30) / 8 + employee_bouns + (((employee_overtime/60)*1.5)* ((employee_salary/30)/hours)) - employee::get_taxes() - employee_deduction - (employee_absence*(employee_salary/30)) - (employee_late*(employee_salary/30/hours)) - employee_borrowing-(employee_leave*(employee_salary/30));
+}
+float employee::get_late() const { return employee_late; }
 
-void employee::set_leavenum(float new_leave) { employee_leave = new_leave; }
-void employee::set_attendance(float new_att) { employee_attendance = new_att; }
-void employee::set_borrowing(float new_borr) { employee_borrowing = new_borr; }
+void employee::set_leavenum(float new_leave) { employee_leave += new_leave; }
+void employee::set_attendance(float new_att) { employee_attendance += new_att; }
+void employee::set_borrowing(float new_borr) { employee_borrowing += new_borr; }
 void employee::set_salary(double new_salary) { employee_salary = new_salary; }
-void employee::set_bouns(float new_bouns) { employee_bouns = new_bouns; }
-void employee::set_overtime(float new_overtime) { employee_overtime = new_overtime; }
+void employee::set_bouns(double new_bouns) { employee_bouns += new_bouns; }
+void employee::set_overtime(double new_overtime) { employee_overtime += new_overtime; }
 void employee::set_absence(float new_abs) { employee_absence = new_abs; }
-void employee::set_deduction(float new_deduction) { employee_deduction = new_deduction; }
+void employee::set_deduction(double new_deduction) { employee_deduction += new_deduction; }
+void employee::set_late(float new_late) { employee_late = new_late; }
+void employee::set_comp_name(const string& new_comp_name) { 
+	comp_name = new_comp_name;
+	stringstream ss(employee_name);
+	string first_name;
+	ss >> first_name;
+	transform(first_name.begin(), first_name.end(), first_name.begin(), tolower);
+	employee_email = first_name + to_string(employee_id-100) + sys.get_company_by_id(sys.get_company_id(comp_name)).get_company_domain();
+}
+void employee::check_in(long long time) { time_in = time; }
+long long employee::check_out(){
+	long long time_out = time_in;
+	time_in = 0;
+	return time_out;
+}
+long long employee::get_time_in() const {
+	return time_in;
+}
+void employee::set_time_in(long long time) {
+	time_in = time;
+}
+
+

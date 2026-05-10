@@ -3,7 +3,11 @@
 void delete_emp_page(string company_name, employee& current_user) {
 	company& comp = sys.get_company_by_id(sys.get_company_id(company_name));
 	position = 0;
-	main_ui("Setting", 3,roles[0]);
+	if (current_user.get_role() == roles[0]) {
+		system_admin_ui("Setting", 3, roles[0]);
+	}else {
+		admin_ui("Delete Employee", 2, roles[1]);
+	}
 	move(5, centerS(((string)"Delete employee from " + company_name + " company")));
 	cout << "Delete employee from " + company_name + " company";
 	move(7, centerS(((string)"Enter employee ID to delete")));
@@ -29,7 +33,7 @@ void delete_emp_page(string company_name, employee& current_user) {
 			string spaces = string(45, ' ');
 			bcolor(main_back_color);
 			cout << spaces;
-			int emp_index = comp.search_emp_ID(emp_id);
+			int emp_index = comp.search_emp_ID(static_cast<int>(emp_id));
 			if (emp_index != -1) {
 				bcolor(main_back_color);
 				move(12, 1);
@@ -41,18 +45,21 @@ void delete_emp_page(string company_name, employee& current_user) {
 				move(18, 1);
 				cout << "employee role: " << comp.get_emp(emp_index).get_role();
 				move(20, 1);
-				cout << "employee status: " << (comp.get_emp(emp_index).get_locked() ? "inactive" : "active");
+				cout << "employee status: " << (comp.get_emp(emp_index).get_locked() ? "\033[31minactive" : "\033[32mactive");
+				bcolor(main_back_color);
 				move(22, centerS(((string)"Are you sure you want to delete this employee")));
+				red(font);
 				cout << "Are you sure you want to delete this employee";
+				fcolor(main_font_color);
 				move(23, centerS(((string)"Yes")));
 				hoverd_button;;
 				fcolor(main_font_color);
 				cout << "Yes";
 				bcolor(main_back_color);
 				do {
-					buttons(functions = "super_admin");
+					buttons(functions = "main");
 					if (functions == "enter") {
-						sys.get_company_by_id(sys.get_company_id(company_name)).delete_emp(emp_id);
+						sys.get_company_by_id(sys.get_company_id(company_name)).delete_emp(static_cast<int>(emp_id));
 						string error = "Employee deleted successfully";
 						move(24, 2);
 						bcolor(main_back_color);
@@ -63,6 +70,7 @@ void delete_emp_page(string company_name, employee& current_user) {
 						cout << error;
 						bcolor(main_boxback_color);
 						fcolor(main_font_color);
+						save_data();
 						Sleep(2000);
 						if (current_user.get_role() == roles[0]) {
 							edit_com_page(current_user);

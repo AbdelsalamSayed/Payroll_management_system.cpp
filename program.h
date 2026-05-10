@@ -8,4 +8,3 @@
 #include "classes/Appsystem.h"
 #include "classes/employee.h"
 
-inline Appsystem sys;

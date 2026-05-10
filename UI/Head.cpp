@@ -169,7 +169,7 @@ void buttons(string& functions) {
 			}
 
 		} while (functions != "enter" && functions != "up");
-	}else if (functions == "super_admin") {
+	}else if (functions == "main") {
 		do
 		{
 			char input = _getch();
@@ -426,3 +426,79 @@ void domain_write(int num, string input) {
 	else { cout << input; }
 }
 
+void logout_msg() {
+	reset;
+	string functions;
+	position = 1;
+	move(11, centerN(21));
+	white(back);
+	red(font);
+	Dframe(8, 21);
+	string error = "Do you want to Logout";
+	move(13, centerLN(13, 33, error));
+	black(font);
+	cout << "\a" << error;
+	move(16, centerN(5));
+	moveR(6);
+	Dframe(1, 5);
+	move(17, centerN(5));
+	moveR(8);
+	cout << "No";
+	move(16, centerN(5));
+	moveL(6);
+	red(back);
+	Dframe(1, 5);
+	move(17, centerN(5));
+	moveL(4);
+	cout << "Yes";
+	white(back);
+	do {
+		buttons(functions = "main");
+		if ((functions == "right" || functions == "tab") && position == 1) {
+			white(back);
+			move(16, centerN(5));
+			moveL(6);
+			Dframe(1, 5);
+			move(17, centerN(5));
+			moveL(4);
+			cout << "Yes";
+			red(back);
+			move(16, centerN(5));
+			moveR(6);
+			Dframe(1, 5);
+			move(17, centerN(5));
+			moveR(8);
+			cout << "No";
+			position = 2;
+			white(back);
+		}
+		if ((functions == "left" || functions == "tab") && position == 2) {
+			white(back);
+			move(16, centerN(5));
+			moveR(6);
+			Dframe(1, 5);
+			move(17, centerN(5));
+			moveR(8);
+			cout << "No";
+			move(16, centerN(5));
+			moveL(6);
+			red(back);
+			Dframe(1, 5);
+			move(17, centerN(5));
+			moveL(4);
+			cout << "Yes";
+			position = 1;
+			white(back);
+		}
+		if (functions == "enter" && position == 1) {
+			loginpage_ui();
+			clear_token();
+			loginpage();
+			
+		}
+		else if (functions == "enter" && position == 2){
+			break;
+		}
+
+	} while (true);
+}

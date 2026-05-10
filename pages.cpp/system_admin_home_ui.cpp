@@ -1,6 +1,6 @@
 #include "../pages.H/system_admin.h"
 
-void main_ui(string page,int i,string role) {
+void system_admin_ui(string page,int i,string role) {
 	string space = string(Width, double2);
 	body();
 	fcolor(main_bordr_color);
@@ -36,7 +36,7 @@ void main_ui(string page,int i,string role) {
 	}
 	fcolor("100;210;255");
 }
-void main__ui(string page,int i,string role) {
+void admin_ui(string page,int i,string role) {
 	string space = string(Width, double2);
 	body();
 	fcolor(main_bordr_color);
@@ -72,11 +72,47 @@ void main__ui(string page,int i,string role) {
 	}
 	fcolor("100;210;255");
 }
+void staff_ui(string page,int i,employee& current_user) {
+	string space = string(Width, double2);
+	body();
+	fcolor(main_bordr_color);
+	bcolor(main_back_color);
+	time_t now = time(0);
+	struct tm ltm;
+	localtime_s(&ltm, &now);
+	string date = to_string(ltm.tm_mday) + "  /  " + to_string(1 + ltm.tm_mon) + "  /  " + to_string(1900 + ltm.tm_year);
+	string dashboard = current_user.get_email() + " (" + page + ")";
+	move(0, 1);
+	red(back);
+	black(Bfont);
+	cout << "X";
+	fcolor(main_bordr_color);
+	bcolor(main_back_color);
+	cout << "ESC";
+	white(Bfont);
+	bold;
+	move(2, centerS(dashboard));
+	cout << dashboard;
+	move(0, centerS(date));
+	cout << date;
+	fcolor(main_bordr_color);
+	move(1, 0);cout << double9 << space << double10;
+	move(3, 0);cout << double9 << space << double10;
+	if (current_user.get_role() == roles[0]) {
+		footer(roles[0], i);
+	}	else if (current_user.get_role() == roles[1]) {
+		footer(roles[1], i);
+	}
+	else if (current_user.get_role() == roles[2]) {
+		footer(roles[2], i);
+	}
+	fcolor("100;210;255");
+}
 
 
 
 void system_admin_home_ui() {
-	main_ui("home", 1,roles[0]);
+	system_admin_ui("home", 1,roles[0]);
 	string system_status;
 	string space = string(Width, double2);
 	fcolor(main_bordr_color);

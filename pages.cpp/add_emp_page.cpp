@@ -6,7 +6,11 @@ void add_emp_page(string company_name,employee& _current_user) {
 	employee emp = sys.get_employee_by_email(current_user.get_email());
 	string functions = "start", emp_name, emp_email, emp_pass;
 	double emp_salary;
-	main_ui("Add Employee", 3,roles[0]);
+	if (current_user.get_role() == roles[0]) {
+		system_admin_ui("Add Employee", 3, roles[0]);
+	}else {
+		admin_ui("Add Employee", 2, roles[1]);
+	}
 	bcolor(main_back_color);
 	fcolor(main_boxborder_color);
 	move(6, 1);
@@ -51,7 +55,7 @@ void add_emp_page(string company_name,employee& _current_user) {
 				continue;
 			}
 			move(9, ((string)"Employee email: ").length()+1);
-			string id = to_string(sys.get_company_by_id(sys.get_company_id(company_name)).comp_emp_num());
+			string id = to_string(sys.get_company_by_id(sys.get_company_id(company_name)).comp_emp_num()+1);
 			stringstream ss(emp_name);
 			string first_name;
 			ss >> first_name;
@@ -60,7 +64,8 @@ void add_emp_page(string company_name,employee& _current_user) {
 			write_frame(29, notinput, emp_email, functions);
 			move(12, ((string)"Employee password: ").length() + 1);
 			write_frame(26, _pass, emp_pass, functions);
-			if (functions == "esc") { edit_com_page(current_user); }
+			if (functions == "esc" && current_user.get_role() == roles[0]) { edit_com_page(current_user); }
+			else if (functions == "esc" && current_user.get_role() == roles[1]) { Admin_edit_com_page(current_user); }
 			if (functions == "enter" && emp_pass.empty()) { functions = "start"; continue; }
 			if (emp_pass.length() < 8 || !any_of(emp_pass.begin(), emp_pass.end(), ::isupper) || !any_of(emp_pass.begin(), emp_pass.end(), ::islower) || !any_of(emp_pass.begin(), emp_pass.end(), ::isdigit) || !any_of(emp_pass.begin(), emp_pass.end(), [](char c) { return ispunct(c); })) {
 				functions = "start";
@@ -124,6 +129,7 @@ void add_emp_page(string company_name,employee& _current_user) {
 	move(19, centerS(((string)"Employee added successfully.")));
 	green(font);
 	cout << "Employee added successfully.";
+	save_data();
 	Sleep(2000);
 	
 	if (emp.get_role() == roles[0]) {

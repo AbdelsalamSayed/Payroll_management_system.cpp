@@ -2,38 +2,34 @@
 #include "../Main_H.h"
 #include "employee.h"
 
-
-
-class company
-{
+class company {
+private:
 	inline static int last_comp_id = 0;
-	string company_name;
 	int company_id;
+	string company_name;
 	string company_domain;
 
-	vector<class employee> employeeslist;
-
-
+	vector<employee> employeeslist;
 
 public:
+	company(const string& _company_name, const string& _company_domain);
 
-	
+	// Getters
+	string get_company_name() const;
+	string get_company_domain() const;
+	int get_company_id() const;
+	int get_emp_count() const;
+	int comp_emp_num() const;
+
 	employee& get_emp(int index);
-	company(string _company_name, string _company_domaine);
-	int comp_emp_num();
-	void add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary,string _comp_name);
-	int get_emp_count();
-	int search_emp_ID(int id);
-	int search_emp_email(string email);
-	void delete_emp(int id);
-	employee& get_employee_by_email(string email);
+	employee& get_employee_by_email(const string& email);
+	int search_emp_ID(int id) const;
+	int search_emp_email(const string& email) const;
+	int get_total_salary() const;
 
-	string get_company_name();
-	string get_company_domain();
-	int get_company_id();
-
-	void set_company_name(string name);
+	// Setters
+	void set_company_name(const string& name);
 	void set_company_id(int id);
-	
-
+	void add_emp(string emp_name, string emp_email, string emp_pass, double emp_salary, string _comp_name);
+	void delete_emp(int id);
 };

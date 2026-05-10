@@ -30,9 +30,6 @@
     <ClInclude Include="classes\company.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="security\search_user.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="pages.H\password_page.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,9 +54,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="classes\company.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="security\search_user.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="pages.cpp\password_page.cpp">
@@ -95,5 +89,12 @@
     <ClCompile Include="pages.cpp\admins.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pages.cpp\staff_page.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="zdata.txt" />
+    <Text Include="ztoken.txt" />
   </ItemGroup>
 </Project>
